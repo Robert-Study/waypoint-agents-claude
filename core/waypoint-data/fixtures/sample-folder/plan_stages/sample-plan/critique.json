@@ -1,0 +1,13 @@
+{
+  "schema": "waypoint.plan_stage.v1",
+  "stage": "critique",
+  "verdict": "revise",
+  "created_at": "2026-01-01T09:05:00Z",
+  "findings": [
+    {
+      "node": null,
+      "severity": "info",
+      "text": "SAMPLE critique"
+    }
+  ]
+}

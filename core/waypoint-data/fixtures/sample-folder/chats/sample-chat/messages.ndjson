@@ -1,0 +1,3 @@
+{"seq":0,"provider":"claude","role":"user","text":"SAMPLE question","at":"2026-01-01T09:00:00Z","turn_id":"t0"}
+{"seq":1,"provider":"claude","role":"assistant","text":"SAMPLE answer","at":"2026-01-01T09:01:00Z","turn_id":"t0"}
+{"seq":2,"provider":"codex","role":"assistant","text":"SAMPLE codex reply","at":"2026-01-01T09:02:00Z","turn_id":null}

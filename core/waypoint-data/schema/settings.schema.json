@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "waypoint/settings.schema.json",
+  "title": "Waypoint settings (settings/settings.json). Never holds a key or token.",
+  "type": "object",
+  "required": ["usage_fresh_minutes", "max_retries", "sync_mode", "python"],
+  "additionalProperties": false,
+  "properties": {
+    "usage_fresh_minutes": { "type": "number", "minimum": 1, "description": "REVERSIBLE_AGENT_DEFAULT 30, by=agent, undo=change this setting." },
+    "max_retries": { "type": "integer", "minimum": 0 },
+    "resume_cold_after_minutes": { "type": "number", "exclusiveMinimum": 0, "description": "Minutes idle after which an asking session counts as cold (prompt cache expired): an answer then resumes the work from Waypoint instead of waking the chat. Default 60." },
+    "sync_mode": { "type": "object", "additionalProperties": { "type": "string", "enum": ["cloud", "local"] }, "description": "Per project." },
+    "web_root": { "type": ["string", "null"] },
+    "web_url": { "type": ["string", "null"] },
+    "gemini_key_slot": { "type": ["string", "null"], "description": "Slot name only, never a key." },
+    "python": { "type": "string", "minLength": 1, "description": "Interpreter the runner is started with. REVERSIBLE_AGENT_DEFAULT by=agent, undo=change this setting." },
+    "runner_dir": { "type": "string", "minLength": 1, "description": "The runner folder put on PYTHONPATH when the mod starts the runner. Seeded by the cutover." },
+    "model_pick": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "task": { "type": ["string", "null"] },
+        "chat": { "type": ["string", "null"] },
+        "plan": { "type": ["string", "null"] }
+      }
+    },
+    "mute_kinds": { "type": "array", "items": { "type": "string" } },
+    "chime": { "type": "boolean" },
+    "panel_tabs": { "type": "object", "additionalProperties": { "type": "boolean" }, "description": "Tab id on or off." },
+    "mod": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "engineUrl": { "type": "string" },
+        "ownedFilesGuard": { "type": "boolean" },
+        "notifyQuestions": { "type": "boolean" },
+        "workerTools": { "type": "boolean" }
+      }
+    },
+    "demo": { "type": "boolean" }
+  }
+}

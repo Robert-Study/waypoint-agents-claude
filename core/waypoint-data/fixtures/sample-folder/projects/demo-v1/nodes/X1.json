@@ -1,0 +1,40 @@
+{
+  "schema": "waypoint.node.v1",
+  "project": "demo-v1",
+  "id": "X1",
+  "title": "Old export feature",
+  "goal": "Goal of Old export feature.",
+  "goal_hash": null,
+  "check_hash": null,
+  "check": {
+    "type": "command",
+    "run": "node check.mjs"
+  },
+  "deps": [],
+  "parent": null,
+  "estimate": 1,
+  "slot": null,
+  "location": {
+    "where": "unset",
+    "changed_at": null
+  },
+  "files": [
+    "src/X1.ts"
+  ],
+  "kind": "worker",
+  "risk": "contained",
+  "prompt": "Build Old export feature.",
+  "recommended": "sonnet",
+  "effort": "medium",
+  "owner": "worker",
+  "lane": "build",
+  "pool": null,
+  "model": null,
+  "status": "skipped",
+  "attempts": 0,
+  "actor": null,
+  "evidence": "skipped: replaced by the file store",
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

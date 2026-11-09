@@ -1,0 +1,15 @@
+{
+  "schema": "waypoint.learn.v1",
+  "kind": "cards",
+  "items": [
+    {
+      "question_id": "sample-question",
+      "reps": 2,
+      "ease": 2.5,
+      "interval_days": 6,
+      "due_at": "2026-01-07T09:00:00Z",
+      "last_rating": 4,
+      "updated_at": "2026-01-01T09:00:00Z"
+    }
+  ]
+}

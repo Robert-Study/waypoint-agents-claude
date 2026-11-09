@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "waypoint/usage.schema.json",
+  "title": "One usage reading per pool (usage/<pool>.json). A number is kept only with its read time.",
+  "type": "object",
+  "required": ["pool", "remaining_percent", "resets_at", "read_at", "source"],
+  "additionalProperties": false,
+  "properties": {
+    "pool": { "type": "string", "minLength": 1 },
+    "remaining_percent": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "null = unknown." },
+    "resets_at": { "type": ["string", "null"] },
+    "read_at": { "type": ["string", "null"], "description": "null when the pool was never read." },
+    "source": { "type": "string" }
+  }
+}

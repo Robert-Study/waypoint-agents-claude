@@ -1,0 +1,9 @@
+{
+  "schema": "waypoint.claim.v1",
+  "project": "waypoint-v6",
+  "node": "cloud-01",
+  "owner": "cloud:run-42",
+  "location": "cloud-run-42",
+  "token": "9f8e7d6c5b4a",
+  "heartbeat_at": "2026-11-07T12:00:00Z"
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "waypoint.chat.v1",
+  "id": "sample-codex-chat",
+  "provider": "codex",
+  "kind": "direct",
+  "parent_session": null,
+  "title": "SAMPLE codex chat",
+  "status": "open",
+  "created_at": "2026-01-01T09:05:00Z",
+  "updated_at": "2026-01-01T09:05:00Z",
+  "messages": [
+    {
+      "seq": 0,
+      "provider": "codex",
+      "role": "user",
+      "text": "SAMPLE inline message",
+      "at": "2026-01-01T09:05:00Z",
+      "turn_id": "t0"
+    }
+  ]
+}

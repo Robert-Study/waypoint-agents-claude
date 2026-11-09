@@ -1,0 +1,45 @@
+{
+  "schema": "waypoint.node.v1",
+  "project": "demo-v2",
+  "id": "A2",
+  "title": "Build the reader",
+  "goal": "Goal of Build the reader.",
+  "goal_hash": null,
+  "check_hash": null,
+  "check": {
+    "type": "command",
+    "run": "node check.mjs"
+  },
+  "deps": [
+    {
+      "id": "A1",
+      "crosses": "the schema files"
+    }
+  ],
+  "parent": null,
+  "estimate": 1,
+  "slot": 2,
+  "location": {
+    "where": "cloud",
+    "changed_at": "2026-11-07T09:00:00Z"
+  },
+  "files": [
+    "src/A2.ts"
+  ],
+  "kind": "worker",
+  "risk": "contained",
+  "prompt": "Build Build the reader.",
+  "recommended": "sonnet",
+  "effort": "medium",
+  "owner": "worker",
+  "lane": "build",
+  "pool": null,
+  "model": null,
+  "status": "running",
+  "attempts": 0,
+  "actor": null,
+  "evidence": null,
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

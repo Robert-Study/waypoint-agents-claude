@@ -1,0 +1,11 @@
+{
+  "schema": "waypoint.action.v1",
+  "id": "act-028-probe",
+  "type": "probe",
+  "status": "refused",
+  "payload": {
+    "target": "engine"
+  },
+  "created_at": "2026-11-07T12:00:00Z",
+  "by": "mod"
+}

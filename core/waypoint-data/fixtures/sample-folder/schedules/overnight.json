@@ -1,0 +1,5 @@
+{
+  "id": "overnight", "project": "waypoint-v6", "mode": "balanced", "model": null, "effort": "medium",
+  "spend_ceiling": 0, "start": "22:00", "window": "22:00-06:00", "order": [],
+  "last_run": { "slot": null, "started_at": null, "ended_at": null, "result": null }
+}

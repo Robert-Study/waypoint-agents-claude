@@ -1,0 +1,13 @@
+{
+  "schema": "waypoint.action.v1",
+  "id": "act-023-state-snapshot-write",
+  "type": "state_snapshot_write",
+  "status": "failed",
+  "payload": {
+    "project": "waypoint-v6",
+    "note": "before merge"
+  },
+  "created_at": "2026-11-07T12:00:00Z",
+  "by": "mod",
+  "error": "sample failure"
+}

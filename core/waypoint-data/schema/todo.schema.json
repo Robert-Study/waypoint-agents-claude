@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "todo.schema.json",
+  "title": "To-do",
+  "description": "todos/<id>.json. The writer sets category and subtype; no reader classifies.",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "text",
+    "status",
+    "category",
+    "subtype",
+    "link",
+    "node",
+    "project",
+    "order",
+    "merged_into",
+    "click_count",
+    "next_click",
+    "created_at",
+    "rev",
+    "updated_at",
+    "updated_by"
+  ],
+  "properties": {
+    "schema": {
+      "const": "waypoint.todo.v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "open",
+        "handed_off",
+        "done",
+        "dropped"
+      ]
+    },
+    "category": {
+      "enum": [
+        "review",
+        "decisions",
+        "hands_on"
+      ]
+    },
+    "subtype": {
+      "enum": [
+        "failure",
+        "approval",
+        "own"
+      ],
+      "description": "failure = Review (shown red); approval = Decisions; own = Hands-on (Owner's own)."
+    },
+    "link": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "node": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "project",
+            "id"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "project": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+            },
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+            }
+          }
+        }
+      ]
+    },
+    "project": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "order": {
+      "type": "integer",
+      "description": "Position within its category."
+    },
+    "merged_into": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "click_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "next_click": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "What the next click opens or does; null when nothing is left."
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 10
+    },
+    "created_by": {
+      "type": "string"
+    },
+    "first_clicked_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 10
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "archived_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 10
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "done_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "handoffs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "deliverables": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rev": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Revision counter: +1 on every write; writers compare it before saving."
+    },
+    "updated_at": {
+      "type": "string",
+      "minLength": 10,
+      "description": "ISO 8601 time of the last write."
+    },
+    "updated_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Who wrote it: owner, engine, a session id or an agent label."
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "review"
+          }
+        },
+        "required": [
+          "category"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subtype": {
+            "const": "failure"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "decisions"
+          }
+        },
+        "required": [
+          "category"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subtype": {
+            "const": "approval"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "hands_on"
+          }
+        },
+        "required": [
+          "category"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subtype": {
+            "const": "own"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "waypoint.snapshot.v1",
+  "title": "BoardSnapshot",
+  "description": "snapshots/<project>/<ts>.json: the board snapshot state_snapshot_write produces and state_snapshot_resume reads. Revision is required.",
+  "type": "object",
+  "required": ["schema", "project", "revision", "nodes"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"type": "string", "minLength": 1},
+    "project": {"$ref": "#/$defs/project"},
+    "revision": {"type": "integer", "minimum": 0},
+    "nodes": {"type": "array", "items": {"$ref": "#/$defs/node"}}
+  },
+  "$defs": {
+    "project": {
+      "title": "SnapshotProject",
+      "type": "object",
+      "required": ["id", "title"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "title": {"type": "string"},
+        "brief": {"type": ["string", "null"]},
+        "cwd": {"type": ["string", "null"]},
+        "created": {"type": ["string", "null"]},
+        "status": {"type": ["string", "null"]},
+        "family": {"type": ["string", "null"]},
+        "family_title": {"type": ["string", "null"]},
+        "version": {"type": ["string", "null"]},
+        "archived": {"type": "boolean"}
+      }
+    },
+    "claim": {
+      "title": "SnapshotClaim",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "by": {"type": ["string", "null"]},
+        "worktree": {"type": ["string", "null"]},
+        "cwd": {"type": ["string", "null"]},
+        "environment": {"type": ["string", "null"]},
+        "since": {"type": ["string", "null"]}
+      }
+    },
+    "node": {
+      "title": "SnapshotNode",
+      "description": "Optional engine fields (recommended, files, effort, and so on) are allowed.",
+      "type": "object",
+      "required": ["id", "title", "status"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "title": {"type": "string"},
+        "goal": {"type": ["string", "null"]},
+        "check": {},
+        "deps": {"type": "array"},
+        "owner": {"type": ["string", "null"]},
+        "lane": {"type": ["string", "null"]},
+        "status": {"type": "string"},
+        "attempts": {"type": "integer", "minimum": 0},
+        "actor": {"type": ["string", "null"]},
+        "evidence": {"type": ["string", "null"]},
+        "claim": {"anyOf": [{"$ref": "#/$defs/claim"}, {"type": "null"}]}
+      }
+    }
+  }
+}

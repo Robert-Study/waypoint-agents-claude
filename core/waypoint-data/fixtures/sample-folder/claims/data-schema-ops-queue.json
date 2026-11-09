@@ -1,0 +1,11 @@
+{
+  "schema": "waypoint.claim.v1",
+  "project": "waypoint-v6",
+  "node": "data-schema-ops-queue",
+  "owner": "runner",
+  "location": "~/workspace/worktrees/wp12-data-schema-ops-queue",
+  "token": "c1a2b3d4e5f6",
+  "heartbeat_at": "2026-11-07T12:00:00Z",
+  "since": "2026-11-07T12:00:00Z",
+  "claimed_by": "worker"
+}

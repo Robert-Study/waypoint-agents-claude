@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "waypoint/agent.schema.json",
+  "title": "Agent, route, model or add-on switch (agents/<id>.json)",
+  "type": "object",
+  "required": ["id", "kind", "enabled"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "kind": { "type": "string", "enum": ["agent", "route", "model", "addon"] },
+    "enabled": { "type": "boolean" },
+    "route": { "type": ["string", "null"], "description": "Route this entry runs through, null when it is the route itself." },
+    "pool": { "type": ["string", "null"], "description": "Usage pool it draws from, null when it draws from none (free or local)." },
+    "label": { "type": "string" },
+    "note": { "type": "string" }
+  }
+}

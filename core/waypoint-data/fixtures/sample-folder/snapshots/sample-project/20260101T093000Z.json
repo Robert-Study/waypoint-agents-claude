@@ -1,0 +1,60 @@
+{
+  "schema": "waypoint.state.v1",
+  "project": {
+    "id": "sample-project",
+    "title": "SAMPLE project",
+    "brief": "SAMPLE brief",
+    "cwd": "SAMPLE/cwd",
+    "created": "2026-01-01T08:00:00Z",
+    "status": "active",
+    "family": null,
+    "family_title": null,
+    "version": null,
+    "archived": false
+  },
+  "revision": 42,
+  "nodes": [
+    {
+      "id": "sample-node",
+      "title": "SAMPLE node",
+      "goal": "SAMPLE goal",
+      "check": {
+        "type": "command",
+        "run": "SAMPLE"
+      },
+      "deps": [],
+      "owner": "worker",
+      "lane": "data",
+      "status": "done",
+      "attempts": 1,
+      "actor": "sample-child",
+      "evidence": "SAMPLE: ok",
+      "claim": null
+    },
+    {
+      "id": "sample-next",
+      "title": "SAMPLE next node",
+      "goal": "SAMPLE goal",
+      "check": {
+        "type": "command",
+        "run": "SAMPLE"
+      },
+      "deps": [
+        "sample-node"
+      ],
+      "owner": "worker",
+      "lane": "data",
+      "status": "claimed",
+      "attempts": 0,
+      "actor": null,
+      "evidence": null,
+      "claim": {
+        "by": "sample-child",
+        "worktree": "SAMPLE/worktree",
+        "cwd": "SAMPLE/worktree",
+        "environment": null,
+        "since": "2026-01-01T09:15:00Z"
+      }
+    }
+  ]
+}

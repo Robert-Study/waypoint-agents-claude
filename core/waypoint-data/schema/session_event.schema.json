@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "waypoint.session.v1",
+  "title": "SessionFile",
+  "description": "sessions/<id>.json: one agent session with its event log, parent and fork ids and child-to-parent callbacks.",
+  "type": "object",
+  "required": ["schema", "id", "agent", "status", "events"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "waypoint.session.v1"},
+    "id": {"type": "string", "minLength": 1},
+    "agent": {"type": "string", "minLength": 1},
+    "parent": {"type": ["string", "null"], "description": "Session id of the parent (spawner), null for a root."},
+    "fork_of": {"type": ["string", "null"], "description": "Session id this one was forked from."},
+    "orchestrator": {"type": ["string", "null"], "description": "Orchestrator id that owns it."},
+    "project": {"type": ["string", "null"]},
+    "node": {"type": ["string", "null"]},
+    "cwd": {"type": ["string", "null"]},
+    "title": {"type": ["string", "null"]},
+    "status": {"enum": ["running", "idle", "done", "error", "archived"]},
+    "started_at": {"type": "string"},
+    "updated_at": {"type": "string"},
+    "events": {"type": "array", "items": {"$ref": "#/$defs/event"}}
+  },
+  "$defs": {
+    "event": {
+      "title": "SessionEvent",
+      "type": "object",
+      "required": ["seq", "at", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "seq": {"type": "integer", "minimum": 0},
+        "at": {"type": "string"},
+        "kind": {"enum": ["started", "message", "tool", "fork", "callback", "status", "ended"]},
+        "actor": {"type": ["string", "null"]},
+        "summary": {"type": ["string", "null"]},
+        "parent_id": {"type": ["string", "null"]},
+        "fork_id": {"type": ["string", "null"]},
+        "callback": {"anyOf": [{"$ref": "#/$defs/callback"}, {"type": "null"}]},
+        "data": {"type": ["object", "null"]}
+      }
+    },
+    "callback": {
+      "title": "SessionCallback",
+      "description": "A child session reporting back to its parent.",
+      "type": "object",
+      "required": ["from_session", "to_session", "outcome"],
+      "additionalProperties": false,
+      "properties": {
+        "from_session": {"type": "string", "minLength": 1},
+        "to_session": {"type": "string", "minLength": 1},
+        "outcome": {"enum": ["done", "error", "needs_you", "question"]},
+        "summary": {"type": ["string", "null"]},
+        "receipt": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "family.schema.json",
+  "title": "Family",
+  "description": "families/<family>.json: projects grouped as versions of one product.",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "title",
+    "created_at",
+    "projects",
+    "rev",
+    "updated_at",
+    "updated_by"
+  ],
+  "properties": {
+    "schema": {
+      "const": "waypoint.family.v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 10
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+      },
+      "description": "Member project ids, oldest version first."
+    },
+    "rev": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Revision counter: +1 on every write; writers compare it before saving."
+    },
+    "updated_at": {
+      "type": "string",
+      "minLength": 10,
+      "description": "ISO 8601 time of the last write."
+    },
+    "updated_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Who wrote it: owner, engine, a session id or an agent label."
+    }
+  },
+  "additionalProperties": false
+}

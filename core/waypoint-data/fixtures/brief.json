@@ -1,0 +1,132 @@
+{
+ "schema": "waypoint.brief-fixture.v1",
+ "note": "Expected texts are exact; the Python port must reproduce them byte for byte.",
+ "cases": [
+  {
+   "name": "with-prompt-and-downstream",
+   "node": {
+    "schema": "waypoint.node.v1",
+    "project": "waypoint-v6",
+    "status": "ready",
+    "rev": 1,
+    "updated_at": "2026-11-07T10:00:00Z",
+    "updated_by": "engine",
+    "estimate": 1,
+    "slot": null,
+    "location": {
+     "where": "pc",
+     "changed_at": null
+    },
+    "kind": "worker",
+    "parent": null,
+    "id": "data-brief",
+    "title": "Worker brief builder",
+    "goal": "Provide one pure function that builds the worker brief.\nSecond line, with \"quotes\".",
+    "check": {
+     "type": "command",
+     "run": "node --experimental-strip-types --test core/waypoint-data/test/brief.test.ts"
+    },
+    "deps": [
+     {
+      "id": "data-schema-core",
+      "crosses": "node, check and todo shapes"
+     }
+    ],
+    "files": [
+     "core/waypoint-data/src/brief.ts",
+     "core/waypoint-data/test/brief.test.ts"
+    ],
+    "prompt": "Write the test first and watch it fail."
+   },
+   "graph": {
+    "nodes": [
+     {
+      "id": "data-schema-core",
+      "title": "Schema",
+      "deps": []
+     },
+     {
+      "id": "data-brief",
+      "title": "Worker brief builder",
+      "deps": [
+       {
+        "id": "data-schema-core",
+        "crosses": "node, check and todo shapes"
+       }
+      ]
+     },
+     {
+      "id": "run-dispatch-core",
+      "title": "Dispatch core",
+      "deps": [
+       {
+        "id": "data-brief",
+        "crosses": "brief text"
+       }
+      ]
+     }
+    ]
+   },
+   "todos": [
+    {
+     "text": "Confirm the schema",
+     "status": "open",
+     "node": {
+      "project": "waypoint-v6",
+      "id": "data-brief"
+     }
+    },
+    {
+     "text": "Other",
+     "status": "done",
+     "node": {
+      "project": "waypoint-v6",
+      "id": "data-brief"
+     }
+    }
+   ],
+   "expected_brief": "# Your node: data-brief (Worker brief builder)\nProject: waypoint-v6\n\n## Goal (fixed)\n> Provide one pure function that builds the worker brief.\n> Second line, with \"quotes\".\n\n## Done-check\nRun `node --experimental-strip-types --test core/waypoint-data/test/brief.test.ts`; it must exit 0.\n\n## Owned files (write only these)\n- core/waypoint-data/src/brief.ts\n- core/waypoint-data/test/brief.test.ts\n\n## Comes in\n- data-schema-core: node, check and todo shapes\n\n## Goes out\n- run-dispatch-core: brief text\n\n## Open to-dos on this node\n- Confirm the schema\n\n## Receipt\nWrite .waypoint/receipts/waypoint-v6.data-brief.json when finished.\n\n## Rules\n- Do not change the goal.\n- Do only this task. Write only the owned files (and the test files the check names).\n- Write the check first if it does not exist, see it fail, then make it pass. Never weaken or skip it.\n- No paid routes, no new credentials, never push public.\n- Report evidence: the exact command output or files that prove the check passes.\n",
+   "expected_packet": "# Task data-brief: Worker brief builder\nProject: waypoint-v6\n\n## Goal (locked, quoted exactly)\n> Provide one pure function that builds the worker brief.\n> Second line, with \"quotes\".\n\n## Done-check (must pass)\nRun `node --experimental-strip-types --test core/waypoint-data/test/brief.test.ts`; it must exit 0.\n```json\n{\n \"type\": \"command\",\n \"run\": \"node --experimental-strip-types --test core/waypoint-data/test/brief.test.ts\"\n}\n```\n\n## Inputs (what crosses in)\n- data-schema-core: node, check and todo shapes\n\n## Owned files (write only these)\n- core/waypoint-data/src/brief.ts\n- core/waypoint-data/test/brief.test.ts\n\n## What crosses out\n- run-dispatch-core (Dispatch core): brief text\n\n## Plan prompt\nWrite the test first and watch it fail.\n\n## Exit criteria\n- The done-check passes on your branch.\n- Only the owned files changed.\n- The deliverable is complete, not empty.\n\n## Receipt format\nWrite one file, .waypoint/receipts/waypoint-v6.data-brief.json:\n```json\n{\n \"schema\": \"waypoint.receipt.v1\",\n \"project\": \"waypoint-v6\",\n \"node\": \"data-brief\",\n \"status\": \"done\",\n \"summary\": \"One plain sentence.\",\n \"evidence\": [\n  \"command: result\"\n ],\n \"outputs\": [\n  \"path/you/wrote\"\n ],\n \"todo\": null\n}\n```\n\n## Rules\n- Do not change the goal.\n- Do only this task. Write only the owned files (and the test files the check names).\n- Write the check first if it does not exist, see it fail, then make it pass. Never weaken or skip it.\n- No paid routes, no new credentials, never push public.\n- Report evidence: the exact command output or files that prove the check passes.\n"
+  },
+  {
+   "name": "no-prompt-no-deps",
+   "node": {
+    "schema": "waypoint.node.v1",
+    "project": "waypoint-v6",
+    "status": "ready",
+    "rev": 1,
+    "updated_at": "2026-11-07T10:00:00Z",
+    "updated_by": "engine",
+    "estimate": 1,
+    "slot": null,
+    "location": {
+     "where": "pc",
+     "changed_at": null
+    },
+    "kind": "worker",
+    "parent": null,
+    "id": "solo",
+    "title": "Solo",
+    "goal": "Do a thing.",
+    "check": {
+     "type": "human",
+     "prompt": "Looks right"
+    },
+    "deps": [],
+    "files": []
+   },
+   "graph": {
+    "nodes": [
+     {
+      "id": "solo",
+      "title": "Solo",
+      "deps": []
+     }
+    ]
+   },
+   "todos": [],
+   "expected_brief": "# Your node: solo (Solo)\nProject: waypoint-v6\n\n## Goal (fixed)\n> Do a thing.\n\n## Done-check\nRobert confirms: Looks right\n\n## Owned files (write only these)\n- (none named)\n\n## Comes in\n- (none)\n\n## Goes out\n- (nothing depends on this node)\n\n## Receipt\nWrite .waypoint/receipts/waypoint-v6.solo.json when finished.\n\n## Rules\n- Do not change the goal.\n- Do only this task. Write only the owned files (and the test files the check names).\n- Write the check first if it does not exist, see it fail, then make it pass. Never weaken or skip it.\n- No paid routes, no new credentials, never push public.\n- Report evidence: the exact command output or files that prove the check passes.\n",
+   "expected_packet": "# Task solo: Solo\nProject: waypoint-v6\n\n## Goal (locked, quoted exactly)\n> Do a thing.\n\n## Done-check (must pass)\nRobert confirms: Looks right\n```json\n{\n \"type\": \"human\",\n \"prompt\": \"Looks right\"\n}\n```\n\n## Inputs (what crosses in)\n- (none)\n\n## Owned files (write only these)\n- (none named)\n\n## What crosses out\n- (nothing depends on this node)\n\n## Exit criteria\n- The done-check passes on your branch.\n- Only the owned files changed.\n- The deliverable is complete, not empty.\n\n## Receipt format\nWrite one file, .waypoint/receipts/waypoint-v6.solo.json:\n```json\n{\n \"schema\": \"waypoint.receipt.v1\",\n \"project\": \"waypoint-v6\",\n \"node\": \"solo\",\n \"status\": \"done\",\n \"summary\": \"One plain sentence.\",\n \"evidence\": [\n  \"command: result\"\n ],\n \"outputs\": [\n  \"path/you/wrote\"\n ],\n \"todo\": null\n}\n```\n\n## Rules\n- Do not change the goal.\n- Do only this task. Write only the owned files (and the test files the check names).\n- Write the check first if it does not exist, see it fail, then make it pass. Never weaken or skip it.\n- No paid routes, no new credentials, never push public.\n- Report evidence: the exact command output or files that prove the check passes.\n"
+  }
+ ]
+}

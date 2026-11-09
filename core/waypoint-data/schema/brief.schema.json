@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "waypoint.brief.v1",
+  "title": "BriefFile",
+  "description": "briefs/<day>.json: the morning brief (as brief.build_brief returns it) and the day's constraints.",
+  "type": "object",
+  "required": ["schema", "day", "brief", "constraints"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "waypoint.brief.v1"},
+    "day": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "brief": {"$ref": "#/$defs/morning"},
+    "constraints": {"type": "array", "items": {"$ref": "#/$defs/constraint"}}
+  },
+  "$defs": {
+    "item": {
+      "title": "BriefItem",
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "project": {"type": ["string", "null"]},
+        "node": {"type": ["string", "null"]},
+        "title": {"type": "string"},
+        "summary": {"type": ["string", "null"]}
+      }
+    },
+    "usage": {
+      "title": "BriefUsage",
+      "type": "object",
+      "required": ["pool"],
+      "properties": {
+        "pool": {"type": "string"},
+        "used_pct": {"type": ["number", "null"]},
+        "floor_pct": {"type": ["number", "null"]},
+        "text": {"type": ["string", "null"]}
+      }
+    },
+    "morning": {
+      "title": "MorningBrief",
+      "type": "object",
+      "required": ["since", "until", "hours", "paragraph", "done", "failed", "needs_you"],
+      "additionalProperties": false,
+      "properties": {
+        "since": {"type": "string"},
+        "until": {"type": "string"},
+        "hours": {"type": "number", "minimum": 0},
+        "paragraph": {"type": "string"},
+        "done": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0},
+        "needs_you": {"type": "integer", "minimum": 0},
+        "done_items": {"type": "array", "items": {"$ref": "#/$defs/item"}},
+        "failed_items": {"type": "array", "items": {"$ref": "#/$defs/item"}},
+        "usage": {"type": "array", "items": {"$ref": "#/$defs/usage"}},
+        "triage": {"type": ["array", "object", "null"]}
+      }
+    },
+    "constraint": {
+      "title": "BriefConstraint",
+      "type": "object",
+      "required": ["project", "line"],
+      "additionalProperties": false,
+      "properties": {
+        "project": {"type": "string"},
+        "node": {"type": ["string", "null"]},
+        "line": {"type": "string"},
+        "accepted": {"type": "boolean"},
+        "derived": {"type": "boolean"},
+        "lands_in": {"type": ["string", "null"]},
+        "source": {"type": ["string", "null"]},
+        "created_at": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

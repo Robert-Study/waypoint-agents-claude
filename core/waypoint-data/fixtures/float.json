@@ -1,0 +1,121 @@
+{
+  "schema": "waypoint.float-fixture.v1",
+  "note": "Replayed by TS (test/float.test.ts) and Python (data-pyclient). early/late are start offsets; float = late - early; critical = float 0 on a not-done node. Done/skipped/carried nodes count as 0 remaining work, always report 0/0/0/false. Deps on missing nodes are ignored. A node with children (parent field) also waits for all its children (child finishes before parent starts).",
+  "cases": [
+    {
+      "name": "chain",
+      "nodes": [
+        {"id": "a", "estimate": 2},
+        {"id": "b", "deps": ["a"], "estimate": 3},
+        {"id": "c", "deps": ["b"]}
+      ],
+      "expect": {
+        "a": {"early": 0, "late": 0, "float": 0, "critical": true},
+        "b": {"early": 2, "late": 2, "float": 0, "critical": true},
+        "c": {"early": 5, "late": 5, "float": 0, "critical": true}
+      }
+    },
+    {
+      "name": "diamond",
+      "nodes": [
+        {"id": "a", "estimate": 1},
+        {"id": "b", "deps": ["a"], "estimate": 4},
+        {"id": "c", "deps": ["a"], "estimate": 1},
+        {"id": "d", "deps": ["b", "c"], "estimate": 1}
+      ],
+      "expect": {
+        "a": {"early": 0, "late": 0, "float": 0, "critical": true},
+        "b": {"early": 1, "late": 1, "float": 0, "critical": true},
+        "c": {"early": 1, "late": 4, "float": 3, "critical": false},
+        "d": {"early": 5, "late": 5, "float": 0, "critical": true}
+      }
+    },
+    {
+      "name": "parallel-branches",
+      "nodes": [
+        {"id": "long", "estimate": 5},
+        {"id": "short", "estimate": 2},
+        {"id": "tail", "deps": ["short"], "estimate": 1}
+      ],
+      "expect": {
+        "long": {"early": 0, "late": 0, "float": 0, "critical": true},
+        "short": {"early": 0, "late": 2, "float": 2, "critical": false},
+        "tail": {"early": 2, "late": 4, "float": 2, "critical": false}
+      }
+    },
+    {
+      "name": "done-node-is-zero-work",
+      "nodes": [
+        {"id": "a", "status": "done", "estimate": 10},
+        {"id": "b", "deps": ["a"], "estimate": 2},
+        {"id": "x", "estimate": 1}
+      ],
+      "expect": {
+        "a": {"early": 0, "late": 0, "float": 0, "critical": false},
+        "b": {"early": 0, "late": 0, "float": 0, "critical": true},
+        "x": {"early": 0, "late": 1, "float": 1, "critical": false}
+      }
+    },
+    {
+      "name": "missing-dep-ignored",
+      "nodes": [
+        {"id": "a", "estimate": 2},
+        {"id": "b", "deps": ["gone", "a"], "estimate": 1}
+      ],
+      "expect": {
+        "a": {"early": 0, "late": 0, "float": 0, "critical": true},
+        "b": {"early": 2, "late": 2, "float": 0, "critical": true}
+      }
+    },
+    {
+      "name": "sub-dependencies-parent-waits-for-children",
+      "nodes": [
+        {"id": "p", "estimate": 1},
+        {"id": "k1", "parent": "p", "estimate": 3},
+        {"id": "k2", "parent": "p", "estimate": 1},
+        {"id": "after", "deps": [{"id": "p", "crosses": "result"}], "estimate": 1}
+      ],
+      "expect": {
+        "k1": {"early": 0, "late": 0, "float": 0, "critical": true},
+        "k2": {"early": 0, "late": 2, "float": 2, "critical": false},
+        "p": {"early": 3, "late": 3, "float": 0, "critical": true},
+        "after": {"early": 4, "late": 4, "float": 0, "critical": true}
+      }
+    },
+    {
+      "name": "default-estimate-and-bad-estimate",
+      "nodes": [
+        {"id": "a"},
+        {"id": "b", "deps": ["a"], "estimate": -4},
+        {"id": "c", "deps": ["b"], "estimate": 0}
+      ],
+      "expect": {
+        "a": {"early": 0, "late": 0, "float": 0, "critical": true},
+        "b": {"early": 1, "late": 1, "float": 0, "critical": true},
+        "c": {"early": 2, "late": 2, "float": 0, "critical": true}
+      }
+    },
+    {
+      "name": "cycle",
+      "nodes": [
+        {"id": "a", "deps": ["c"]},
+        {"id": "b", "deps": ["a"]},
+        {"id": "c", "deps": ["b"]}
+      ],
+      "expect_error": "cycle"
+    },
+    {
+      "name": "self-dep-cycle",
+      "nodes": [{"id": "a", "deps": ["a"]}],
+      "expect_error": "cycle"
+    },
+    {
+      "name": "parent-child-cycle",
+      "nodes": [
+        {"id": "p"},
+        {"id": "k", "parent": "p", "deps": ["p"]}
+      ],
+      "expect_error": "cycle"
+    }
+  ]
+}

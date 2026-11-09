@@ -1,0 +1,15 @@
+{
+  "schema": "waypoint.plan_stage.v1",
+  "stage": "questions",
+  "created_at": "2026-01-01T09:04:00Z",
+  "questions": [
+    {
+      "id": "q-1",
+      "prompt": "SAMPLE question",
+      "kind": "scale",
+      "options": [],
+      "answer": null,
+      "purpose": "SAMPLE purpose"
+    }
+  ]
+}

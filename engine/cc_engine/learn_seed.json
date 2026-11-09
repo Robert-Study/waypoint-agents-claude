@@ -1,0 +1,88 @@
+{
+  "schema_version": 2,
+  "title": "Interview",
+  "note": "Neutral example seed for the Learn page. Copy it, replace the roles, competencies, stories and questions with your own, and point the learn_seed setting (or WAYPOINT_LEARN_SEED) at your copy. Paths in 'sources' and 'evidence' may be relative to your notes folder (drive_root) or absolute; leave them empty if you have none.",
+  "sources": [],
+  "roles": [
+    {
+      "id": "general",
+      "label": "General graduate role",
+      "match": ["analyst", "graduate", "associate", "engineer"],
+      "evidence": []
+    }
+  ],
+  "competencies": [
+    {
+      "id": "pitch",
+      "title": "Introduce yourself in two minutes",
+      "group": "motivation",
+      "prereqs": [],
+      "explain": "Open with who you are now, then one or two things you have done that matter for the role, then why this role is the natural next step. Keep it under two minutes and end on the role, not on your history.",
+      "roles": ["general"],
+      "evidence": []
+    },
+    {
+      "id": "problem-solving",
+      "title": "Show how you solve a problem",
+      "group": "behavioural",
+      "prereqs": ["pitch"],
+      "explain": "Pick one real problem. Say what was wrong, how you found the cause, what you changed and what improved. Use a number only if you can say how it was measured.",
+      "roles": ["general"],
+      "evidence": []
+    },
+    {
+      "id": "teamwork",
+      "title": "Describe working with others",
+      "group": "behavioural",
+      "prereqs": ["pitch"],
+      "explain": "Describe a team, your specific part in it, one disagreement or difficulty and how it was resolved. Credit others by name or role and keep your own contribution clear.",
+      "roles": ["general"],
+      "evidence": []
+    }
+  ],
+  "stories": [
+    {
+      "id": "example-story",
+      "title": "Example: fixing a recurring fault",
+      "competencies": ["problem-solving", "teamwork"],
+      "roles": ["general"],
+      "situation": "A small team kept seeing the same intermittent fault in a shared tool.",
+      "task": "Find out why it happened and agree a fix.",
+      "action": "I collected the failing cases in one list, compared what they had in common, tested one cause at a time and proposed the smallest change that removed it.",
+      "result": "The fault stopped recurring and the team kept the list as a checklist.",
+      "pivot": "The faults looked unrelated until they were put side by side.",
+      "link": "Replace this example with a real story from your own experience.",
+      "limits": "This is placeholder text, not a claim about anyone."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-pitch",
+      "text": "Tell me about yourself.",
+      "competencies": ["pitch"],
+      "stories": [],
+      "roles": ["general"],
+      "weight": 2,
+      "tags": ["core"],
+      "outline": ["Who you are now, in one line.", "One or two relevant things you have done.", "Why this role is the next step."]
+    },
+    {
+      "id": "q-problem",
+      "text": "Tell me about a time you solved a hard problem.",
+      "competencies": ["problem-solving"],
+      "stories": ["example-story"],
+      "roles": ["general"],
+      "weight": 2,
+      "tags": ["behavioural"]
+    },
+    {
+      "id": "q-team",
+      "text": "Tell me about a time you worked in a team.",
+      "competencies": ["teamwork", "problem-solving"],
+      "stories": ["example-story"],
+      "roles": ["general"],
+      "weight": 1,
+      "tags": ["behavioural"]
+    }
+  ]
+}

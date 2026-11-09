@@ -1,0 +1,16 @@
+{
+  "schema": "waypoint.question.v1",
+  "id": "q-likert",
+  "project": "demo-v2",
+  "node": null,
+  "kind": "likert",
+  "prompt": "How important is offline use?",
+  "scale": 9,
+  "answer": null,
+  "answered_at": null,
+  "captured": false,
+  "created_at": "2026-11-07T09:00:00Z",
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "waypoint.learn.v1",
+  "kind": "log",
+  "items": [
+    {
+      "seq": 1,
+      "at": "2026-01-01T09:00:00Z",
+      "question_id": "sample-question",
+      "competency_id": "sample-competency",
+      "outcome": "correct",
+      "before": 1,
+      "after": 2
+    }
+  ]
+}

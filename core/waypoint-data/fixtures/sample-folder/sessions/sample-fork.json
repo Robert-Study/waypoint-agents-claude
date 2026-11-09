@@ -1,0 +1,25 @@
+{
+  "schema": "waypoint.session.v1",
+  "id": "sample-fork",
+  "agent": "codex",
+  "parent": null,
+  "fork_of": "sample-root",
+  "orchestrator": null,
+  "project": "sample-project",
+  "node": null,
+  "cwd": null,
+  "title": "SAMPLE forked session",
+  "status": "idle",
+  "started_at": "2026-01-01T09:10:00Z",
+  "updated_at": "2026-01-01T09:10:00Z",
+  "events": [
+    {
+      "seq": 0,
+      "at": "2026-01-01T09:10:00Z",
+      "kind": "started",
+      "actor": "sample-root",
+      "summary": "SAMPLE fork started",
+      "fork_id": "sample-fork"
+    }
+  ]
+}

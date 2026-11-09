@@ -1,0 +1,2 @@
+{"seq": 1, "at": "2026-11-07T09:00:00Z", "project": "demo-v2", "node": null, "kind": "run", "actor": "engine", "summary": "Run started.", "data": {"run": "run-0001"}}
+{"seq": 2, "at": "2026-11-07T09:00:00Z", "project": "demo-v2", "node": "A2", "kind": "status", "actor": "engine", "summary": "A2 is running.", "data": null}

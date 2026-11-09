@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "version.schema.json",
+  "title": "Version",
+  "description": "versions/<project>/<n>.json: append-only record of one version, including what happened to every unfinished node.",
+  "type": "object",
+  "required": [
+    "schema",
+    "project",
+    "n",
+    "created_at",
+    "decisions",
+    "rev",
+    "updated_at",
+    "updated_by"
+  ],
+  "properties": {
+    "schema": {
+      "const": "waypoint.version.v1"
+    },
+    "project": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+    },
+    "n": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "family": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 10
+    },
+    "from_project": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "The earlier version this one grew from."
+    },
+    "decisions": {
+      "type": "array",
+      "description": "One entry per unfinished node of the earlier version.",
+      "items": {
+        "type": "object",
+        "required": [
+          "node",
+          "decision",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "node": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+          },
+          "decision": {
+            "enum": [
+              "carry",
+              "skip"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decided_by": {
+            "type": "string"
+          },
+          "decided_at": {
+            "type": "string",
+            "minLength": 10
+          }
+        }
+      }
+    },
+    "rev": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Revision counter: +1 on every write; writers compare it before saving."
+    },
+    "updated_at": {
+      "type": "string",
+      "minLength": 10,
+      "description": "ISO 8601 time of the last write."
+    },
+    "updated_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Who wrote it: owner, engine, a session id or an agent label."
+    }
+  },
+  "additionalProperties": false
+}

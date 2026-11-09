@@ -1,0 +1,306 @@
+{
+  "schema": "model_facts.v1",
+  "about": "Curated, sourced model facts for the Meridian Models tab (cc_engine/models.py). Hand-edited. Every number names its source; anything not stated in a source stays out (the tab shows it blank / n/a). A provider config (cordis.patch.yml contextWindow) wins over these values for context windows.",
+  "sources": {
+    "audit": "~\\Notes\\notes\\05 Subagent Pipeline\\Outputs\\Frontier_AI_Models_Audit.md (October 2026)",
+    "snapshot": "~\\Notes\\notes\\05 Subagent Pipeline\\Outputs\\Weekly_AI_Landscape_Snapshot.md (baseline 19 Oct 2026, section 2)",
+    "requirements": "~\\Notes\\notes\\05 Subagent Pipeline\\Outputs\\2026-11-04-harness-dashboard\\09_model_picker_requirements.md",
+    "arena": "Arena (formerly LMArena) Text leaderboard https://arena.ai/leaderboard/text; page showed date 2026-10-27; fetched 2026-11-04 (first 153 ranks only; models not seen there stay empty)",
+    "provider_docs": "Context windows from each provider's own docs/model page, URL and retrieval date recorded per model in context_source"
+  },
+  "models": {
+    "claude-opus-5-5": {
+      "label": "Claude Opus 5.5",
+      "aliases": [
+        "claude-opus-5-5",
+        "opus-5.5",
+        "opus",
+        "claude-opus-5.5"
+      ],
+      "elo": 1509,
+      "elo_by_effort": {
+        "high": "1509"
+      },
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'Claude Opus 5.5 (High)' 1509",
+      "context_window": 1000000,
+      "context_source": "https://platform.claude.com/docs/en/models/overview, retrieved 2026-11-04: 'Context window 1M tokens'",
+      "speed": "48-95 tok/s",
+      "speed_source": "snapshot: inference speed column"
+    },
+    "claude-sonnet-5-5": {
+      "label": "Claude Sonnet 5.5",
+      "aliases": [
+        "claude-sonnet-5-5",
+        "sonnet-5.5",
+        "sonnet",
+        "claude-sonnet-5.5"
+      ],
+      "context_window": 1000000,
+      "context_source": "https://platform.claude.com/docs/en/models/overview, retrieved 2026-11-04: 'Context window 1M tokens'",
+      "speed": ">120 tok/s",
+      "speed_source": "snapshot and audit: '>120 tok/s'",
+      "elo": 1477,
+      "elo_by_effort": {
+        "xhigh": "1477"
+      },
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'Claude Sonnet 5.5 (xHigh)' 1477"
+    },
+    "gemini-4-argon": {
+      "label": "Gemini 4 Argon",
+      "aliases": [
+        "gemini-4-argon"
+      ],
+      "elo": 1520,
+      "elo_by_effort": {
+        "high": "1520"
+      },
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'Gemini 4 Argon (High)' 1520",
+      "context_window": 1048576,
+      "context_source": "https://aistudio.google.com/docs/models/gemini-4-argon, retrieved 2026-11-04: 'Context window (unified input and output token limit)' 1,048,576",
+      "speed": "43-62 tok/s",
+      "speed_source": "snapshot and audit"
+    },
+    "gemini-3.8-flash": {
+      "label": "Gemini 3.8 Flash",
+      "aliases": [
+        "gemini-3.8-flash"
+      ],
+      "context_window": 1048576,
+      "context_source": "https://aistudio.google.com/docs/models/gemini-3.8-flash, retrieved 2026-11-04: 'Input token limit' 1,048,576",
+      "speed": "111-155 tok/s",
+      "speed_source": "audit: '111-155 tok/s'; snapshot: 155 tok/s at High",
+      "elo": 1496,
+      "elo_by_effort": {
+        "high": "1496"
+      },
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'Gemini 3.8 Flash (High)' 1496"
+    },
+    "gpt-6.1-sol": {
+      "label": "GPT-6.1 Sol",
+      "aliases": [
+        "gpt-6.1-sol"
+      ],
+      "context_window": 1050000,
+      "context_source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol, retrieved 2026-11-04: '1,050,000 context window'",
+      "speed": "44-56 tok/s",
+      "speed_source": "audit: '44-56 tok/s (96 tok/s Ultrafast)'",
+      "elo": 1481,
+      "elo_by_effort": {
+        "max": "1481"
+      },
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'GPT-6.1 Sol (Max)' 1481"
+    },
+    "deepseek-v4.1-flash": {
+      "label": "DeepSeek V4.1 Flash",
+      "aliases": [
+        "deepseek/deepseek-v4-flash"
+      ],
+      "alias_note": "cordis.patch.yml names deepseek/deepseek-v4-flash 'DeepSeek V4.1 Flash'",
+      "speed": "227 tok/s",
+      "speed_source": "audit and snapshot: 227 tok/s on the Artificial Analysis index (API speed; Freebuff's own speed is not measured)",
+      "elo": 1476,
+      "elo_by_effort": {
+        "max": "1476"
+      },
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'DeepSeek-V4.1-Flash-20260910 (Max)' 1476; board row is the 20260910 snapshot, DeepSeek's docs now name the served version DeepSeek-V4.1-Flash-1017",
+      "context_window": 1000000,
+      "context_source": "https://api-docs.deepseek.com/quick_start/pricing, retrieved 2026-11-04: 'CONTEXT LENGTH 1M' for deepseek-flash (legacy name deepseek-v4-flash served by the same model); the Freebuff route's own contextWindow in cordis.patch.yml wins"
+    },
+    "claude-haiku-5-5": {
+      "label": "Claude Haiku 5.5",
+      "aliases": [
+        "claude-haiku-5-5",
+        "haiku-5.5",
+        "haiku",
+        "claude-haiku-5.5"
+      ],
+      "elo": 1425,
+      "elo_by_effort": {
+        "high": "1425"
+      },
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'Claude Haiku 5.5 (High)' 1425",
+      "context_window": 1000000,
+      "context_source": "https://platform.claude.com/docs/en/models/overview, retrieved 2026-11-04: 'Context window 1M tokens'"
+    },
+    "claude-haiku-4.5": {
+      "label": "Claude Haiku 4.5",
+      "aliases": [
+        "claude-haiku-4.5",
+        "claude-haiku-4-5"
+      ],
+      "elo": 1415,
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'Claude Haiku 4.5 (20251001)' 1415",
+      "context_window": 200000,
+      "context_source": "https://platform.claude.com/docs/en/models/haiku-4-5/overview, retrieved 2026-11-04: 'Context window: 200K tokens'"
+    },
+    "gpt-6-sol": {
+      "label": "GPT-6 Sol",
+      "aliases": [
+        "gpt-6-sol",
+        "chatgpt-web/gpt-6-sol"
+      ],
+      "elo": 1458,
+      "elo_by_effort": {
+        "max": "1458"
+      },
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'GPT-6 Sol (Max)' 1458",
+      "context_window": 1050000,
+      "context_source": "https://developers.openai.com/api/docs/models/gpt-6-sol, retrieved 2026-11-04: '1,050,000 context window' (provider config contextWindow wins where set)"
+    },
+    "gpt-6-luna": {
+      "label": "GPT-6 Luna",
+      "aliases": [
+        "gpt-6-luna",
+        "openai/gpt-6-luna"
+      ],
+      "elo": 1441,
+      "elo_by_effort": {
+        "max": "1441"
+      },
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'GPT-6 Luna (Max)' 1441",
+      "context_window": 1050000,
+      "context_source": "https://developers.openai.com/api/docs/models/gpt-6-luna, retrieved 2026-11-04: '1,050,000 context window' (provider config contextWindow wins where set)"
+    },
+    "gpt-5.3-codex": {
+      "label": "GPT-5.3 Codex",
+      "aliases": [
+        "gpt-5.3-codex"
+      ],
+      "context_window": 400000,
+      "context_source": "https://developers.openai.com/api/docs/models/gpt-5.3-codex, retrieved 2026-11-04: '400,000 context window'"
+    },
+    "gemini-3.6-flash": {
+      "label": "Gemini 3.6 Flash",
+      "aliases": [
+        "gemini-3.6-flash"
+      ],
+      "elo": 1483,
+      "elo_by_effort": {
+        "high": "1483"
+      },
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'Gemini 3.6 Flash (High)' 1483",
+      "context_window": 1048576,
+      "context_source": "https://aistudio.google.com/docs/models/gemini-3.6-flash, retrieved 2026-11-04: 'Input token limit' 1,048,576"
+    },
+    "kimi-k3": {
+      "label": "Kimi K3",
+      "aliases": [
+        "kimi-k3"
+      ],
+      "elo": 1488,
+      "elo_by_effort": {
+        "max": "1488"
+      },
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'Kimi K3 (Max)' 1488",
+      "context_window": 1000000,
+      "context_source": "https://platform.kimi.ai/docs/models, retrieved 2026-11-04: 'a 1M-token context window'"
+    },
+    "mimo-v2.6-pro": {
+      "label": "MiMo 2.6 Pro",
+      "aliases": [
+        "mimo/mimo-v2.6-pro",
+        "mimo-v2.6-pro"
+      ],
+      "elo": 1480,
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'MiMo-V2.6-Pro' 1480",
+      "context_window": 1000000,
+      "context_source": "https://mimo.mi.com/models/en-US/mimo-v2.6-pro, retrieved 2026-11-04: '1M-token context window' (provider config contextWindow wins where set)"
+    },
+    "solar-mini4": {
+      "label": "Solar Mini 4",
+      "aliases": [
+        "upstage/solar-mini4",
+        "solar-mini4",
+        "solar-mini-4"
+      ],
+      "context_window": 512000,
+      "context_source": "https://console.upstage.ai/docs/models/solar-mini-4, retrieved 2026-11-04: '512K context length' (K read as 1000)"
+    },
+    "mai-code-1.1-flash": {
+      "label": "MAI-Code 1.1 Flash",
+      "aliases": [
+        "mai-code-1.1-flash"
+      ],
+      "context_window": 256000,
+      "context_source": "https://microsoft.ai/news/mai-code-1-1-flash, retrieved 2026-11-04: 'retaining a full 256K context window' (K read as 1000; page is about the 3-bit on-device build)"
+    },
+    "qwen3.8-27b": {
+      "label": "Qwen 3.8 27B",
+      "aliases": [
+        "qwen/qwen3.8-27b",
+        "qwen3.8-27b"
+      ],
+      "elo": 1436,
+      "elo_source": "Arena (formerly LMArena) Text leaderboard, https://arena.ai/leaderboard/text, board dated 2026-10-27, retrieved 2026-11-04: row 'Qwen3.8-27B' 1436",
+      "context_window": 131072,
+      "context_source": "https://console.groq.com/docs/models, retrieved 2026-11-04: qwen/qwen3.8-27b context window 131,072 (Groq preview model table)"
+    },
+    "llama-3.3-70b-versatile": {
+      "label": "Llama 3.3 70B",
+      "aliases": [
+        "llama-3.3-70b-versatile"
+      ],
+      "context_window": 131072,
+      "context_source": "https://console.groq.com/docs/models, retrieved 2026-11-04: llama-3.3-70b-versatile context window 131,072 (Groq production model table)"
+    }
+  },
+  "pool_rankings": {},
+  "run_natively": [
+    {
+      "match": {
+        "provider": "anthropic",
+        "kind": "chat"
+      },
+      "reason": "Claude Pro/Max model: use it in Claude Code so dsh does not spend the Claude usage you protect.",
+      "source": "requirements item 6 (Owner, 4 Nov: strong models that work better natively should be used natively)"
+    },
+    {
+      "match": {
+        "provider": "openai-codex",
+        "kind": "chat"
+      },
+      "reason": "ChatGPT Plus (Codex) model: use it in the Codex app yourself. Codex is never a subagent.",
+      "source": "requirements items 3 and 6; AGENTS.md Codex gate"
+    },
+    {
+      "match": {
+        "runner": "antigravity",
+        "models": [
+          "gemini-4-argon",
+          "claude-opus-5-5",
+          "claude-sonnet-5-5"
+        ]
+      },
+      "reason": "Gemini 4 Argon and Antigravity's Claude models work best inside Antigravity itself.",
+      "source": "requirements item 6"
+    }
+  ],
+  "notes": [
+    {
+      "match": {
+        "provider": "github-copilot"
+      },
+      "note": "GitHub Copilot Student: limited plan.",
+      "source": "requirements item 6"
+    },
+    {
+      "match": {
+        "models": [
+          "qwen3.8-27b"
+        ]
+      },
+      "note": "Groq route: tools\\groq_subagent.ps1, free API, 14,400 requests per day (RPD).",
+      "source": "Agent Roles SUBAGENTS.md line 42 (qwen/qwen3.8-27b, 14,400 RPD free); ANTIGRAVITY_ORCHESTRATOR.md line 60 names gpt-oss-120b on the same runner, read 2026-11-05"
+    },
+    {
+      "match": {
+        "models": [
+          "gemini-3.8-flash",
+          "gemini-4-argon"
+        ]
+      },
+      "note": "Implicit prefix caching on prompts of 4,096 tokens or more: 95% discount on cached prefix tokens.",
+      "source": "Agent Roles ANTIGRAVITY_ORCHESTRATOR.md line 33 and ORCHESTRATOR.md line 55, read 2026-11-05"
+    }
+  ]
+}

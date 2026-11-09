@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "waypoint/memory.schema.json",
+  "title": "Last memory reading taken by the runner (usage/memory.json). Not a usage pool.",
+  "type": "object",
+  "required": ["schema", "free_gb", "commit_pct", "min_free_gb", "max_commit_pct", "ok", "reason", "read_at", "source"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "waypoint.memory.v1" },
+    "free_gb": { "type": ["number", "null"], "minimum": 0, "description": "Free physical memory in GB; null = unreadable." },
+    "total_gb": { "type": ["number", "null"], "minimum": 0 },
+    "commit_pct": { "type": ["number", "null"], "minimum": 0, "description": "Commit charge as percent of commit limit; null = unreadable." },
+    "min_free_gb": { "type": "number", "minimum": 0, "description": "Setting memory_min_free_gb (default 1.5)." },
+    "max_commit_pct": { "type": "number", "minimum": 0, "maximum": 100, "description": "Setting memory_max_commit_pct (default 85)." },
+    "ok": { "type": "boolean", "description": "false = a new worker is refused." },
+    "reason": { "type": "string", "description": "Plain sentence; empty-ish 'ok' when fine." },
+    "read_at": { "type": "string" },
+    "source": { "type": "string", "enum": ["GlobalMemoryStatusEx", "proc_meminfo", "sysconf", "unavailable"] }
+  }
+}

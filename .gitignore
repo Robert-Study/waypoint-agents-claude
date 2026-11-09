@@ -1,0 +1,16 @@
+# Local state: the engine database, tokens, logs and pid file live in data/.
+data/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.token
+*.pid
+*.log
+.env
+
+# Python and Node caches
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+node_modules/

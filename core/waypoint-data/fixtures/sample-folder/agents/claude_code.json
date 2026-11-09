@@ -1,0 +1,1 @@
+{ "id": "claude_code", "kind": "agent", "enabled": true, "route": "claude_cli", "pool": "claude_week", "label": "Claude Code" }

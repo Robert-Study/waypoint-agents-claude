@@ -1,0 +1,10 @@
+{
+  "schema": "waypoint.dispatch_request.v1",
+  "id": "disp-1-session-subagent",
+  "project": "waypoint-v6",
+  "node": "run-actions",
+  "route": "session_subagent",
+  "mode": "balanced",
+  "created_at": "2026-11-07T12:00:00Z",
+  "requested_by": "runner"
+}

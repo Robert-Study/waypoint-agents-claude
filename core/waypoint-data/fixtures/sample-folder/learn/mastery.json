@@ -1,0 +1,12 @@
+{
+  "schema": "waypoint.learn.v1",
+  "kind": "mastery",
+  "items": [
+    {
+      "competency_id": "sample-competency",
+      "level": 2,
+      "attempts": 3,
+      "updated_at": "2026-01-01T09:00:00Z"
+    }
+  ]
+}

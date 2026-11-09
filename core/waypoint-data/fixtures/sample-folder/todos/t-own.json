@@ -1,0 +1,20 @@
+{
+  "schema": "waypoint.todo.v1",
+  "id": "t-own",
+  "text": "Renew the domain.",
+  "status": "open",
+  "category": "hands_on",
+  "subtype": "own",
+  "link": null,
+  "node": null,
+  "project": null,
+  "order": 1,
+  "merged_into": null,
+  "click_count": 0,
+  "next_click": null,
+  "created_at": "2026-11-07T09:00:00Z",
+  "created_by": "owner",
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

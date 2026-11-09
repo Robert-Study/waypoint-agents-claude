@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "waypoint.claim.v1",
+  "title": "Claim: claims/<node>.json. Who is working on a node. Columns follow the claims table (claimed_by, worktree, cwd, environment, since, refreshed_at).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "project",
+    "node",
+    "owner",
+    "location",
+    "token",
+    "heartbeat_at"
+  ],
+  "properties": {
+    "schema": {
+      "const": "waypoint.claim.v1"
+    },
+    "project": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "node": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "owner": {
+      "type": "string",
+      "pattern": "^(mod|runner|cloud:[A-Za-z0-9._-]{1,64})$",
+      "description": "mod | runner | cloud:<run>"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1,
+      "description": "worktree or working folder (or cloud run) where the work happens"
+    },
+    "token": {
+      "type": "string",
+      "minLength": 8,
+      "description": "Random claim token that proves the same claimer is refreshing. Not a credential."
+    },
+    "heartbeat_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$"
+    },
+    "since": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$"
+    },
+    "claimed_by": {
+      "type": "string",
+      "description": "display name, e.g. lead-session or a worker label"
+    },
+    "environment": {
+      "type": "string"
+    }
+  }
+}

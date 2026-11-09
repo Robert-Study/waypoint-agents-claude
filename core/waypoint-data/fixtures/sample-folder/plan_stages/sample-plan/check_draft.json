@@ -1,0 +1,13 @@
+{
+  "schema": "waypoint.plan_stage.v1",
+  "stage": "check_draft",
+  "ok": false,
+  "checked_at": "2026-01-01T09:01:00Z",
+  "findings": [
+    {
+      "node": "sample-node",
+      "severity": "warn",
+      "text": "SAMPLE finding"
+    }
+  ]
+}

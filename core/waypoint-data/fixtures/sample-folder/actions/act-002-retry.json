@@ -1,0 +1,12 @@
+{
+  "schema": "waypoint.action.v1",
+  "id": "act-002-retry",
+  "type": "retry",
+  "status": "done",
+  "payload": {
+    "node": "run-actions"
+  },
+  "created_at": "2026-11-07T12:00:00Z",
+  "by": "mod",
+  "finished_at": "2026-11-07T12:00:00Z"
+}

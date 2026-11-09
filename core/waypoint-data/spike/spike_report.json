@@ -1,0 +1,1022 @@
+{
+  "generated_at": "2026-11-07T11:40:52.039002+00:00",
+  "script_mtime_ns": 1794051640740846100,
+  "live_source_opened": "read-only (mode=ro)",
+  "copy_path": "%TEMP%\\waypoint-spike\\cc_copy.sqlite",
+  "learn_copy_path": "%TEMP%\\waypoint-spike\\learn_copy.sqlite",
+  "export_dir": "%TEMP%\\waypoint-spike\\export",
+  "wal_checkpoint": {
+    "mode": "TRUNCATE",
+    "busy": 0,
+    "log_frames": 0,
+    "checkpointed_frames": 0,
+    "ok": true,
+    "integrity_check": "ok"
+  },
+  "learn_wal_checkpoint": {
+    "mode": "TRUNCATE",
+    "busy": 0,
+    "log_frames": -1,
+    "checkpointed_frames": -1,
+    "ok": true,
+    "integrity_check": "ok"
+  },
+  "copy_failures": [],
+  "tables": {
+    "agent_messages": {
+      "database": "cc",
+      "rows": 17,
+      "columns": [
+        {
+          "name": "seq",
+          "type": "INTEGER"
+        },
+        {
+          "name": "session_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "turn_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "role",
+          "type": "TEXT"
+        },
+        {
+          "name": "text",
+          "type": "TEXT"
+        },
+        {
+          "name": "at",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "666beb334434700ffcd24f38cf19db96ef8f261f269b9a567914966278d9a0eb",
+      "hash_match": true
+    },
+    "agent_sessions": {
+      "database": "cc",
+      "rows": 5,
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "agent",
+          "type": "TEXT"
+        },
+        {
+          "name": "cwd",
+          "type": "TEXT"
+        },
+        {
+          "name": "title",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "last_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "ext_id",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "88b0fc4ff6af4f09fd83efc27b10204a426c153249ca976ec1fceb8a97d74fd6",
+      "hash_match": true
+    },
+    "agents": {
+      "database": "cc",
+      "rows": 393,
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "kind",
+          "type": "TEXT"
+        },
+        {
+          "name": "parent",
+          "type": "TEXT"
+        },
+        {
+          "name": "session_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "title",
+          "type": "TEXT"
+        },
+        {
+          "name": "project",
+          "type": "TEXT"
+        },
+        {
+          "name": "node",
+          "type": "TEXT"
+        },
+        {
+          "name": "cwd",
+          "type": "TEXT"
+        },
+        {
+          "name": "status",
+          "type": "TEXT"
+        },
+        {
+          "name": "tool",
+          "type": "TEXT"
+        },
+        {
+          "name": "tokens_in",
+          "type": "INTEGER"
+        },
+        {
+          "name": "tokens_out",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cache_read",
+          "type": "INTEGER"
+        },
+        {
+          "name": "context",
+          "type": "INTEGER"
+        },
+        {
+          "name": "context_window",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cost_eq",
+          "type": "REAL"
+        },
+        {
+          "name": "model",
+          "type": "TEXT"
+        },
+        {
+          "name": "last_line",
+          "type": "TEXT"
+        },
+        {
+          "name": "transcript",
+          "type": "TEXT"
+        },
+        {
+          "name": "started_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "source",
+          "type": "TEXT"
+        },
+        {
+          "name": "link_parent",
+          "type": "TEXT"
+        },
+        {
+          "name": "desk_parent",
+          "type": "TEXT"
+        },
+        {
+          "name": "hook_parent",
+          "type": "TEXT"
+        },
+        {
+          "name": "hook_title",
+          "type": "TEXT"
+        },
+        {
+          "name": "desk_title",
+          "type": "TEXT"
+        },
+        {
+          "name": "tr_title",
+          "type": "TEXT"
+        },
+        {
+          "name": "hook_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "tr_seen",
+          "type": "INTEGER"
+        },
+        {
+          "name": "desk_archived",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cache_creation",
+          "type": "INTEGER"
+        }
+      ],
+      "hash": "3066e1fc1146a538c89eb57455fe5968fdf0ca7cd4021adc0a87347aaeba9329",
+      "hash_match": true
+    },
+    "claims": {
+      "database": "cc",
+      "rows": 9,
+      "columns": [
+        {
+          "name": "project_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "node_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "claimed_by",
+          "type": "TEXT"
+        },
+        {
+          "name": "worktree",
+          "type": "TEXT"
+        },
+        {
+          "name": "cwd",
+          "type": "TEXT"
+        },
+        {
+          "name": "environment",
+          "type": "TEXT"
+        },
+        {
+          "name": "since",
+          "type": "TEXT"
+        },
+        {
+          "name": "refreshed_at",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "63d472dc92f1114ed8890547a8d2264705f71524504d6b26bcbf36b94f0d430c",
+      "hash_match": true
+    },
+    "constraints": {
+      "database": "cc",
+      "rows": 168,
+      "columns": [
+        {
+          "name": "project_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "node_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "accepted",
+          "type": "TEXT"
+        },
+        {
+          "name": "derived",
+          "type": "TEXT"
+        },
+        {
+          "name": "lands_in",
+          "type": "TEXT"
+        },
+        {
+          "name": "line",
+          "type": "TEXT"
+        },
+        {
+          "name": "source",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "2bf69c2353031a66f692810966215d9401dd1378e13c80f2d21bea8be2b98e10",
+      "hash_match": true
+    },
+    "events": {
+      "database": "cc",
+      "rows": 598,
+      "columns": [
+        {
+          "name": "seq",
+          "type": "INTEGER"
+        },
+        {
+          "name": "at",
+          "type": "TEXT"
+        },
+        {
+          "name": "project_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "node_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "kind",
+          "type": "TEXT"
+        },
+        {
+          "name": "actor",
+          "type": "TEXT"
+        },
+        {
+          "name": "summary",
+          "type": "TEXT"
+        },
+        {
+          "name": "data_json",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "ced956e2712ae9ae59ce1dd1915a124bcb3cdd19289ca98b24fa4228da9f02a7",
+      "hash_match": true
+    },
+    "families": {
+      "database": "cc",
+      "rows": 3,
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "title",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "616567664ebde19c3931739cf9bfc98094aba5656120fa87fbd7bc383d4f7087",
+      "hash_match": true
+    },
+    "meta": {
+      "database": "cc",
+      "rows": 20,
+      "columns": [
+        {
+          "name": "key",
+          "type": "TEXT"
+        },
+        {
+          "name": "value",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "5f79c76cd714ed330fc13e13e1e24016925948d8fa6a315e1771c3a6a4fe4066",
+      "hash_match": true
+    },
+    "node_loops": {
+      "database": "cc",
+      "rows": 198,
+      "columns": [
+        {
+          "name": "project_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "node_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "kind",
+          "type": "TEXT"
+        },
+        {
+          "name": "script",
+          "type": "TEXT"
+        },
+        {
+          "name": "crosses_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "risk",
+          "type": "TEXT"
+        },
+        {
+          "name": "scope_json",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "176f8481d549425864aa70eb1f69c405113057909b3d30124073672423a2a219",
+      "hash_match": true
+    },
+    "nodes": {
+      "database": "cc",
+      "rows": 489,
+      "columns": [
+        {
+          "name": "project_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "title",
+          "type": "TEXT"
+        },
+        {
+          "name": "goal",
+          "type": "TEXT"
+        },
+        {
+          "name": "goal_hash",
+          "type": "TEXT"
+        },
+        {
+          "name": "check_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "deps_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "owner",
+          "type": "TEXT"
+        },
+        {
+          "name": "lane",
+          "type": "TEXT"
+        },
+        {
+          "name": "pool",
+          "type": "TEXT"
+        },
+        {
+          "name": "model",
+          "type": "TEXT"
+        },
+        {
+          "name": "effort",
+          "type": "TEXT"
+        },
+        {
+          "name": "status",
+          "type": "TEXT"
+        },
+        {
+          "name": "attempts",
+          "type": "INT"
+        },
+        {
+          "name": "actor",
+          "type": "TEXT"
+        },
+        {
+          "name": "evidence",
+          "type": "TEXT"
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "check_hash",
+          "type": "TEXT"
+        },
+        {
+          "name": "recommended",
+          "type": "TEXT"
+        },
+        {
+          "name": "files_json",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "95e56bda1cac6dccb6b3dab210f3aa5ab4e3f66818b5f2a3e3a932a85369cf78",
+      "hash_match": true
+    },
+    "projects": {
+      "database": "cc",
+      "rows": 23,
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "title",
+          "type": "TEXT"
+        },
+        {
+          "name": "brief",
+          "type": "TEXT"
+        },
+        {
+          "name": "goal_hash",
+          "type": "TEXT"
+        },
+        {
+          "name": "cwd",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "archived",
+          "type": "INT"
+        },
+        {
+          "name": "status",
+          "type": "TEXT"
+        },
+        {
+          "name": "family",
+          "type": "TEXT"
+        },
+        {
+          "name": "version",
+          "type": "INT"
+        }
+      ],
+      "hash": "bde9bf568510c3e5238b328e5a1a52cc87614df5f686fe202cae0a517c9e5e70",
+      "hash_match": true
+    },
+    "questions": {
+      "database": "cc",
+      "rows": 8,
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "project_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "node_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "kind",
+          "type": "TEXT"
+        },
+        {
+          "name": "prompt",
+          "type": "TEXT"
+        },
+        {
+          "name": "options_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "scale",
+          "type": "INT"
+        },
+        {
+          "name": "answer_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "answered_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "captured",
+          "type": "INT"
+        },
+        {
+          "name": "allowed_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "proposal_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "purpose",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "2c0baa8c8ca13339d27169ff9b5868d9920ac64ba79d2022f18da3fc3696299a",
+      "hash_match": true
+    },
+    "receipts": {
+      "database": "cc",
+      "rows": 4,
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "path",
+          "type": "TEXT"
+        },
+        {
+          "name": "name",
+          "type": "TEXT"
+        },
+        {
+          "name": "project",
+          "type": "TEXT"
+        },
+        {
+          "name": "node",
+          "type": "TEXT"
+        },
+        {
+          "name": "session",
+          "type": "TEXT"
+        },
+        {
+          "name": "status",
+          "type": "TEXT"
+        },
+        {
+          "name": "claimed",
+          "type": "TEXT"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT"
+        },
+        {
+          "name": "summary",
+          "type": "TEXT"
+        },
+        {
+          "name": "reason",
+          "type": "TEXT"
+        },
+        {
+          "name": "data_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "ingested_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "content",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "22af6f7455f273a8fc36d56a08c85ef74974d1b3e4ea7d5f8758006a570f32bf",
+      "hash_match": true
+    },
+    "runs": {
+      "database": "cc",
+      "rows": 6,
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "project_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "settings_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "status",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "started_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "ended_at",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "80f6c7cc4d333613a8bc6b546547caf0b3aaec79bcf70d1baaa5d330f48e31c1",
+      "hash_match": true
+    },
+    "sprints": {
+      "database": "cc",
+      "rows": 2,
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "run_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "pool",
+          "type": "TEXT"
+        },
+        {
+          "name": "start_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "end_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "status",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "c7a50da9af0a8335695f5d16063d9bb0848499ad122580fd34182c4fa72df37d",
+      "hash_match": true
+    },
+    "todos": {
+      "database": "cc",
+      "rows": 35,
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "text",
+          "type": "TEXT"
+        },
+        {
+          "name": "status",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_by",
+          "type": "TEXT"
+        },
+        {
+          "name": "handoffs_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "merged_into",
+          "type": "TEXT"
+        },
+        {
+          "name": "section",
+          "type": "TEXT"
+        },
+        {
+          "name": "position",
+          "type": "INTEGER"
+        },
+        {
+          "name": "link",
+          "type": "TEXT"
+        },
+        {
+          "name": "node_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "deliverables_json",
+          "type": "TEXT"
+        },
+        {
+          "name": "first_clicked_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "archived_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "done_by",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "69246ed2abbb5ddac779a380898703695a0cbd5d6c61b7e50f6c4b7d8e5b511d",
+      "hash_match": true
+    },
+    "toggles": {
+      "database": "cc",
+      "rows": 8,
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "enabled",
+          "type": "INTEGER"
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "updated_by",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "4bbfba9243a52a77ae69966cc17f5bff780635b70ac023c7705c7fb73d17e382",
+      "hash_match": true
+    },
+    "toggles_meta": {
+      "database": "cc",
+      "rows": 1,
+      "columns": [
+        {
+          "name": "key",
+          "type": "TEXT"
+        },
+        {
+          "name": "value",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "2216311859e2eb86e70587c0b4b5f5d4db15860d541544f8ca93cb1ada0f6270",
+      "hash_match": true
+    },
+    "attempts": {
+      "database": "learn",
+      "rows": 0,
+      "columns": [
+        {
+          "name": "seq",
+          "type": "INTEGER"
+        },
+        {
+          "name": "at",
+          "type": "TEXT"
+        },
+        {
+          "name": "concept_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT"
+        },
+        {
+          "name": "before",
+          "type": "INTEGER"
+        },
+        {
+          "name": "after",
+          "type": "INTEGER"
+        }
+      ],
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "hash_match": true
+    },
+    "interview_cards": {
+      "database": "learn",
+      "rows": 0,
+      "columns": [
+        {
+          "name": "question_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "reps",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ease",
+          "type": "REAL"
+        },
+        {
+          "name": "interval_days",
+          "type": "REAL"
+        },
+        {
+          "name": "due_at",
+          "type": "TEXT"
+        },
+        {
+          "name": "last_rating",
+          "type": "INTEGER"
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "hash_match": true
+    },
+    "interview_log": {
+      "database": "learn",
+      "rows": 0,
+      "columns": [
+        {
+          "name": "seq",
+          "type": "INTEGER"
+        },
+        {
+          "name": "at",
+          "type": "TEXT"
+        },
+        {
+          "name": "question_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "competency_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT"
+        },
+        {
+          "name": "before",
+          "type": "INTEGER"
+        },
+        {
+          "name": "after",
+          "type": "INTEGER"
+        }
+      ],
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "hash_match": true
+    },
+    "interview_mastery": {
+      "database": "learn",
+      "rows": 0,
+      "columns": [
+        {
+          "name": "competency_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "attempts",
+          "type": "INTEGER"
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "hash_match": true
+    },
+    "mastery": {
+      "database": "learn",
+      "rows": 0,
+      "columns": [
+        {
+          "name": "concept_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "attempts",
+          "type": "INTEGER"
+        },
+        {
+          "name": "correct",
+          "type": "INTEGER"
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT"
+        }
+      ],
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "hash_match": true
+    }
+  },
+  "sqlite_reader": "python",
+  "node_sqlite_reads_copy": true,
+  "node_note": "node:sqlite (built in) read the copy read-only and row counts matched"
+}

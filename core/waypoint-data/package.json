@@ -1,0 +1,10 @@
+{
+  "name": "waypoint-data",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Waypoint 1.2 file data model: JSON schemas, TypeScript types and a golden sample folder (core entities).",
+  "scripts": {
+    "check": "node schema/check.mjs"
+  }
+}

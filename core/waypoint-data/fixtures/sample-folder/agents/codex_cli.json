@@ -1,0 +1,1 @@
+{ "id": "codex_cli", "kind": "route", "enabled": false, "route": null, "pool": "codex_week", "label": "Codex CLI worker route", "note": "Switch is off in this sample." }

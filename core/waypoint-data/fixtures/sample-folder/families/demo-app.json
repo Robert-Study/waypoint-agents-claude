@@ -1,0 +1,13 @@
+{
+  "schema": "waypoint.family.v1",
+  "id": "demo-app",
+  "title": "Demo app",
+  "created_at": "2026-11-07T09:00:00Z",
+  "projects": [
+    "demo-v1",
+    "demo-v2"
+  ],
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

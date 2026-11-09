@@ -1,0 +1,47 @@
+{
+  "schema": "waypoint.node.v1",
+  "project": "demo-v2",
+  "id": "A2a",
+  "title": "Reader unit tests",
+  "goal": "Goal of Reader unit tests.",
+  "goal_hash": null,
+  "check_hash": null,
+  "check": {
+    "type": "files_exist",
+    "paths": [
+      "tests/reader.test.ts"
+    ]
+  },
+  "deps": [
+    {
+      "id": "A2",
+      "crosses": "reader module"
+    }
+  ],
+  "parent": "A2",
+  "estimate": 1,
+  "slot": null,
+  "location": {
+    "where": "unset",
+    "changed_at": null
+  },
+  "files": [
+    "src/A2a.ts"
+  ],
+  "kind": "worker",
+  "risk": "contained",
+  "prompt": "Build Reader unit tests.",
+  "recommended": "sonnet",
+  "effort": "medium",
+  "owner": "worker",
+  "lane": "build",
+  "pool": null,
+  "model": null,
+  "status": "not_started",
+  "attempts": 0,
+  "actor": null,
+  "evidence": null,
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

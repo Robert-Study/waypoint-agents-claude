@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "check.schema.json",
+  "title": "Done-check",
+  "description": "What decides that a node is done. Mirrors engine/cc_engine/checks.py. Embedded in node.check; not a file of its own.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "enum": [
+        "human",
+        "command",
+        "files_exist",
+        "text_present"
+      ]
+    },
+    "prompt": {
+      "type": "string",
+      "description": "human: what Owner confirms."
+    },
+    "run": {
+      "type": "string",
+      "description": "command: the command line, run in the node's worktree."
+    },
+    "expect_stdout": {
+      "type": "string",
+      "description": "command: text the output must contain."
+    },
+    "paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "files_exist: paths that must exist."
+    },
+    "path": {
+      "type": "string",
+      "description": "text_present: file to read."
+    },
+    "text": {
+      "type": "string",
+      "description": "text_present: text it must contain."
+    }
+  },
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "command"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "run"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "files_exist"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "paths"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "text_present"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "path",
+          "text"
+        ]
+      }
+    }
+  ]
+}

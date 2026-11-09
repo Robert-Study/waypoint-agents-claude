@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "question.schema.json",
+  "title": "Question",
+  "description": "questions/<id>.json: waypoint.question.v1 plus the answer. Options never carry a preselected flag.",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "project",
+    "node",
+    "kind",
+    "prompt",
+    "answer",
+    "answered_at",
+    "captured",
+    "created_at",
+    "rev",
+    "updated_at",
+    "updated_by"
+  ],
+  "properties": {
+    "schema": {
+      "const": "waypoint.question.v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+    },
+    "project": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "node": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "kind": {
+      "enum": [
+        "select",
+        "likert",
+        "text"
+      ]
+    },
+    "prompt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scale": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 2
+    },
+    "answer": {
+      "description": "null until answered."
+    },
+    "answered_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 10
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "captured": {
+      "type": "boolean",
+      "description": "True once the answer reached the preference registry."
+    },
+    "allowed": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "proposal": {
+      "description": "Optional proposed answer or change attached to the question."
+    },
+    "purpose": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "session": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Id of the session that asked (from the receipt or question file), when known."
+    },
+    "resume": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/resume"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "How the answer goes back to the work, written once by the runner after the answer (resume.py)."
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 10
+    },
+    "rev": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Revision counter: +1 on every write; writers compare it before saving."
+    },
+    "updated_at": {
+      "type": "string",
+      "minLength": 10,
+      "description": "ISO 8601 time of the last write."
+    },
+    "updated_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Who wrote it: owner, engine, a session id or an agent label."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "resume": {
+      "type": "object",
+      "required": ["mode", "line", "cold_after_minutes", "reason", "action", "decided_at"],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": ["direct", "fresh"],
+          "description": "direct: the warm asking session gets the answer. fresh: the cold session is not woken; the work resumes from Waypoint."
+        },
+        "session": {"type": ["string", "null"]},
+        "line": {"type": "string", "minLength": 1, "description": "The one line a fresh worker or a cleared session is given: resume <project> from Waypoint."},
+        "idle_minutes": {"type": ["number", "null"], "description": "Minutes the asking session had been idle when the answer was routed; null when unknown."},
+        "cold_after_minutes": {"type": "number", "exclusiveMinimum": 0},
+        "reason": {"type": "string", "minLength": 1},
+        "action": {"enum": ["deliver", "restart_node", "clear_session"], "description": "deliver: the mod in the warm session appends the answer. restart_node: the node goes back to ready and the runner starts a fresh worker. clear_session: no node, so the lead clears the session and sends the line."},
+        "node_status_before": {"type": ["string", "null"]},
+        "decided_at": {"type": "string", "minLength": 10},
+        "delivered_at": {"type": ["string", "null"], "description": "When the answer reached the work (appended, node restarted, or session cleared)."}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "select"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "required": [
+          "options"
+        ]
+      }
+    }
+  ]
+}

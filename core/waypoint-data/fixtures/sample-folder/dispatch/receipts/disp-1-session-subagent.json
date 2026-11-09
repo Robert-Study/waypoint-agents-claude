@@ -1,0 +1,10 @@
+{
+  "schema": "waypoint.dispatch_receipt.v1",
+  "request_id": "disp-1-session-subagent",
+  "project": "waypoint-v6",
+  "node": "run-actions",
+  "route": "session_subagent",
+  "status": "started",
+  "at": "2026-11-07T12:00:00Z",
+  "session_id": "sess-1"
+}

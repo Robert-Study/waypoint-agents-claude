@@ -1,0 +1,45 @@
+{
+  "schema": "waypoint.node.v1",
+  "project": "demo-v2",
+  "id": "B1",
+  "title": "Owner approves the layout",
+  "goal": "Goal of Owner approves the layout.",
+  "goal_hash": null,
+  "check_hash": null,
+  "check": {
+    "type": "human",
+    "prompt": "Layout looks right?"
+  },
+  "deps": [
+    {
+      "id": "A2",
+      "crosses": "a screenshot of the layout"
+    }
+  ],
+  "parent": null,
+  "estimate": 1,
+  "slot": null,
+  "location": {
+    "where": "unset",
+    "changed_at": null
+  },
+  "files": [
+    "src/B1.ts"
+  ],
+  "kind": "human",
+  "risk": "contained",
+  "prompt": "Build Owner approves the layout.",
+  "recommended": "sonnet",
+  "effort": "medium",
+  "owner": "owner",
+  "lane": "build",
+  "pool": null,
+  "model": null,
+  "status": "not_started",
+  "attempts": 0,
+  "actor": null,
+  "evidence": null,
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

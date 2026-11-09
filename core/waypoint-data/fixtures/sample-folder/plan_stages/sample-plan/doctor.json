@@ -1,0 +1,12 @@
+{
+  "schema": "waypoint.plan_stage.v1",
+  "stage": "doctor",
+  "project": "sample-project",
+  "node": "sample-node",
+  "diagnosis": "SAMPLE diagnosis",
+  "cause": "check",
+  "suggestions": [
+    "SAMPLE suggestion"
+  ],
+  "created_at": "2026-01-01T09:02:00Z"
+}

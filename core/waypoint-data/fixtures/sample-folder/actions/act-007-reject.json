@@ -1,0 +1,13 @@
+{
+  "schema": "waypoint.action.v1",
+  "id": "act-007-reject",
+  "type": "reject",
+  "status": "failed",
+  "payload": {
+    "node": "run-actions",
+    "reason": "check output is empty"
+  },
+  "created_at": "2026-11-07T12:00:00Z",
+  "by": "owner",
+  "error": "sample failure"
+}

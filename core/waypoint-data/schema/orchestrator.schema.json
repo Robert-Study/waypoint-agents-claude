@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "waypoint.orchestrator.v1",
+  "title": "OrchestratorFile",
+  "description": "orchestrators/<id>.json: an orchestrator, where it runs and what it coordinates.",
+  "type": "object",
+  "required": ["schema", "id", "kind", "location", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "waypoint.orchestrator.v1"},
+    "id": {"type": "string", "minLength": 1},
+    "kind": {"enum": ["lead", "project"]},
+    "title": {"type": ["string", "null"]},
+    "provider": {"enum": ["claude", "codex", "other", null]},
+    "session": {"type": ["string", "null"], "description": "Session id of the orchestrator's own chat."},
+    "projects": {"type": "array", "items": {"type": "string"}},
+    "children": {"type": "array", "items": {"type": "string"}, "description": "Session ids of workers it started."},
+    "location": {"$ref": "#/$defs/location"},
+    "status": {"enum": ["active", "paused", "retired"]},
+    "created_at": {"type": "string"},
+    "updated_at": {"type": "string"}
+  },
+  "$defs": {
+    "location": {
+      "title": "OrchestratorLocation",
+      "type": "object",
+      "required": ["kind"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"enum": ["local", "worktree", "cloud"]},
+        "host": {"type": ["string", "null"]},
+        "cwd": {"type": ["string", "null"]},
+        "worktree": {"type": ["string", "null"]},
+        "branch": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

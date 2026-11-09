@@ -1,0 +1,32 @@
+{
+  "schema": "waypoint.brain_index.v1",
+  "generated_at": "2026-01-01T09:00:00Z",
+  "notes": [
+    {
+      "id": "note-1",
+      "path": "SAMPLE/note-1.md",
+      "title": "SAMPLE mental model",
+      "kind": "mental_model",
+      "provenance": "vetted",
+      "tags": [
+        "sample"
+      ],
+      "summary": "SAMPLE summary",
+      "updated_at": "2026-01-01T09:00:00Z",
+      "links": [
+        "note-2"
+      ]
+    },
+    {
+      "id": "note-2",
+      "path": "SAMPLE/note-2.md",
+      "title": "SAMPLE captured words",
+      "kind": "robert_words",
+      "provenance": "owner",
+      "tags": [],
+      "summary": null,
+      "updated_at": "2026-01-01T09:00:00Z",
+      "links": []
+    }
+  ]
+}

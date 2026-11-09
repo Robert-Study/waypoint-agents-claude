@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "waypoint/schedule.schema.json",
+  "title": "Run schedule (schedules/<id>.json)",
+  "type": "object",
+  "required": ["id", "project", "mode", "spend_ceiling"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "project": { "type": "string", "minLength": 1 },
+    "mode": { "type": "string", "enum": ["frugal", "balanced", "push", "max"] },
+    "model": { "type": ["string", "null"] },
+    "effort": { "type": ["string", "null"], "enum": ["low", "medium", "high", "xhigh", "max", null] },
+    "spend_ceiling": { "type": "number", "minimum": 0, "description": "0 = zero extra paid spend." },
+    "start": { "type": ["string", "null"], "description": "Local start time HH:MM, null = manual." },
+    "window": { "type": ["string", "null"], "description": "Allowed window, for example 22:00-06:00." },
+    "order": { "type": "array", "items": { "type": "string" }, "description": "Node or pool order." },
+    "last_run": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "slot": { "type": ["string", "null"] },
+        "started_at": { "type": ["string", "null"] },
+        "ended_at": { "type": ["string", "null"] },
+        "result": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

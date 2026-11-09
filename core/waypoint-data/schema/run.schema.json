@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "run.schema.json",
+  "title": "Run",
+  "description": "runs/<run_id>.json (events in runs/<run_id>/events.ndjson): one press of Run.",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "project",
+    "status",
+    "created_at",
+    "rev",
+    "updated_at",
+    "updated_by"
+  ],
+  "properties": {
+    "schema": {
+      "const": "waypoint.run.v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+    },
+    "project": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+    },
+    "settings": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 10
+    },
+    "started_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 10
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "ended_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 10
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sprints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "pool",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+          },
+          "pool": {
+            "type": "string"
+          },
+          "start_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 10
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "end_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 10
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rev": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Revision counter: +1 on every write; writers compare it before saving."
+    },
+    "updated_at": {
+      "type": "string",
+      "minLength": 10,
+      "description": "ISO 8601 time of the last write."
+    },
+    "updated_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Who wrote it: owner, engine, a session id or an agent label."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "waypoint.project.v1",
+  "id": "demo-v2",
+  "title": "Demo app v2",
+  "brief": "Demo app v2: sample project.",
+  "goal_hash": "g-demo-v2",
+  "cwd": {
+    "machine": "pc",
+    "rel": "dsh-control-centre"
+  },
+  "created_at": "2026-11-07T09:00:00Z",
+  "archived": false,
+  "status": "active",
+  "family": "demo-app",
+  "version": 2,
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

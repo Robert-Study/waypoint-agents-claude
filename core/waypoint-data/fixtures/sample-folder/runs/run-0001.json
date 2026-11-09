@@ -1,0 +1,26 @@
+{
+  "schema": "waypoint.run.v1",
+  "id": "run-0001",
+  "project": "demo-v2",
+  "settings": {
+    "floors": {
+      "codex": 0.75
+    }
+  },
+  "status": "running",
+  "created_at": "2026-11-07T09:00:00Z",
+  "started_at": "2026-11-07T09:00:00Z",
+  "ended_at": null,
+  "sprints": [
+    {
+      "id": "s1",
+      "pool": "claude",
+      "start_at": "2026-11-07T09:00:00Z",
+      "end_at": null,
+      "status": "running"
+    }
+  ],
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

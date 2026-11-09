@@ -1,0 +1,24 @@
+{
+  "schema": "waypoint.orchestrator.v1",
+  "id": "sample-lead",
+  "kind": "lead",
+  "title": "SAMPLE lead orchestrator",
+  "provider": "claude",
+  "session": "sample-root",
+  "projects": [
+    "sample-project"
+  ],
+  "children": [
+    "sample-child"
+  ],
+  "location": {
+    "kind": "local",
+    "host": "SAMPLE-HOST",
+    "cwd": "SAMPLE/cwd",
+    "worktree": null,
+    "branch": null
+  },
+  "status": "active",
+  "created_at": "2026-01-01T08:00:00Z",
+  "updated_at": "2026-01-01T09:30:00Z"
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "receipt.schema.json",
+  "title": "Receipt",
+  "description": "receipts/<name>.json: waypoint.receipt.v1 exactly as in core/docs/FILE_CONTRACT.md. Write-once, so it carries no rev.",
+  "type": "object",
+  "required": [
+    "schema",
+    "status",
+    "summary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "waypoint.receipt.v1"
+    },
+    "status": {
+      "enum": [
+        "done",
+        "error",
+        "needs_you"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "project": {
+      "type": "string"
+    },
+    "node": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "maxLength": 500
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string"
+      }
+    },
+    "todo": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "text"
+          ],
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "section": {
+              "enum": [
+                "human",
+                "computer"
+              ]
+            },
+            "link": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "questions": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object"
+      }
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "session": {
+      "type": "string"
+    },
+    "agent": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "waypoint.chat.v1",
+  "id": "sample-chat",
+  "provider": "claude",
+  "kind": "subagent",
+  "parent_session": "sample-root",
+  "title": "SAMPLE chat",
+  "status": "done",
+  "created_at": "2026-01-01T09:00:00Z",
+  "updated_at": "2026-01-01T09:02:00Z"
+}

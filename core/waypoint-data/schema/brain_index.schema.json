@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "waypoint.brain_index.v1",
+  "title": "BrainIndexFile",
+  "description": "brain/index.json: index of brain notes (mental models, doctrine, learnings, sources, captured words).",
+  "type": "object",
+  "required": ["schema", "generated_at", "notes"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "waypoint.brain_index.v1"},
+    "generated_at": {"type": "string"},
+    "notes": {"type": "array", "items": {"$ref": "#/$defs/note"}}
+  },
+  "$defs": {
+    "note": {
+      "title": "BrainNote",
+      "type": "object",
+      "required": ["id", "path", "title", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "minLength": 1},
+        "title": {"type": "string"},
+        "kind": {"enum": ["mental_model", "doctrine", "learning", "source", "robert_words", "other"]},
+        "provenance": {"enum": ["owner", "vetted", "agent", "unknown"]},
+        "tags": {"type": "array", "items": {"type": "string"}},
+        "summary": {"type": ["string", "null"]},
+        "updated_at": {"type": "string"},
+        "links": {"type": "array", "items": {"type": "string"}, "description": "Ids of related notes."}
+      }
+    }
+  }
+}

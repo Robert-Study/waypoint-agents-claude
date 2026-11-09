@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "waypoint.plan_stage.v1",
+  "title": "PlanStageFile",
+  "description": "plan_stages/<id>/{draft,check_draft,doctor,research,questions,critique}.json: stage outputs of plan_draft, check_draft, failure_doctor and the deep planner. The stage field says which.",
+  "type": "object",
+  "required": ["schema", "stage"],
+  "oneOf": [
+    {"$ref": "#/$defs/draft"},
+    {"$ref": "#/$defs/check_draft"},
+    {"$ref": "#/$defs/doctor"},
+    {"$ref": "#/$defs/research"},
+    {"$ref": "#/$defs/questions"},
+    {"$ref": "#/$defs/critique"}
+  ],
+  "$defs": {
+    "plan_node": {
+      "title": "PlanDraftNode",
+      "type": "object",
+      "required": ["id", "title", "goal"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "title": {"type": "string"},
+        "goal": {"type": "string"},
+        "check": {},
+        "deps": {"type": "array"},
+        "lane": {"type": ["string", "null"]},
+        "owner": {"type": ["string", "null"]},
+        "files": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "finding": {
+      "title": "PlanFinding",
+      "type": "object",
+      "required": ["text"],
+      "additionalProperties": false,
+      "properties": {
+        "node": {"type": ["string", "null"]},
+        "severity": {"enum": ["info", "warn", "block", null]},
+        "text": {"type": "string"}
+      }
+    },
+    "question": {
+      "title": "PlanQuestion",
+      "type": "object",
+      "required": ["id", "prompt"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "prompt": {"type": "string"},
+        "kind": {"enum": ["scale", "tick", "text", null]},
+        "options": {"type": "array", "items": {"type": "string"}},
+        "answer": {},
+        "purpose": {"type": ["string", "null"]}
+      }
+    },
+    "research_topic": {
+      "title": "PlanResearchTopic",
+      "type": "object",
+      "required": ["topic", "finding"],
+      "additionalProperties": false,
+      "properties": {
+        "topic": {"type": "string"},
+        "finding": {"type": "string"},
+        "sources": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "draft": {
+      "title": "PlanDraftFile",
+      "type": "object",
+      "required": ["schema", "stage", "project", "nodes"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "waypoint.plan_stage.v1"},
+        "stage": {"const": "draft"},
+        "project": {"type": "string", "minLength": 1},
+        "brief": {"type": ["string", "null"]},
+        "created_at": {"type": "string"},
+        "nodes": {"type": "array", "items": {"$ref": "#/$defs/plan_node"}}
+      }
+    },
+    "check_draft": {
+      "title": "PlanCheckDraftFile",
+      "type": "object",
+      "required": ["schema", "stage", "ok", "findings"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "waypoint.plan_stage.v1"},
+        "stage": {"const": "check_draft"},
+        "ok": {"type": "boolean"},
+        "checked_at": {"type": "string"},
+        "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}}
+      }
+    },
+    "doctor": {
+      "title": "PlanDoctorFile",
+      "description": "failure_doctor output for a failed node.",
+      "type": "object",
+      "required": ["schema", "stage", "node", "diagnosis"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "waypoint.plan_stage.v1"},
+        "stage": {"const": "doctor"},
+        "project": {"type": ["string", "null"]},
+        "node": {"type": "string", "minLength": 1},
+        "diagnosis": {"type": "string"},
+        "cause": {"enum": ["check", "brief", "environment", "model", "unknown", null]},
+        "suggestions": {"type": "array", "items": {"type": "string"}},
+        "created_at": {"type": "string"}
+      }
+    },
+    "research": {
+      "title": "PlanResearchFile",
+      "type": "object",
+      "required": ["schema", "stage", "topics"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "waypoint.plan_stage.v1"},
+        "stage": {"const": "research"},
+        "created_at": {"type": "string"},
+        "topics": {"type": "array", "items": {"$ref": "#/$defs/research_topic"}}
+      }
+    },
+    "questions": {
+      "title": "PlanQuestionsFile",
+      "type": "object",
+      "required": ["schema", "stage", "questions"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "waypoint.plan_stage.v1"},
+        "stage": {"const": "questions"},
+        "created_at": {"type": "string"},
+        "questions": {"type": "array", "items": {"$ref": "#/$defs/question"}}
+      }
+    },
+    "critique": {
+      "title": "PlanCritiqueFile",
+      "type": "object",
+      "required": ["schema", "stage", "verdict", "findings"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "waypoint.plan_stage.v1"},
+        "stage": {"const": "critique"},
+        "verdict": {"enum": ["accept", "revise", "reject"]},
+        "created_at": {"type": "string"},
+        "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}}
+      }
+    }
+  }
+}

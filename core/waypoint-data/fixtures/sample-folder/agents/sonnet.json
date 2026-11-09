@@ -1,0 +1,1 @@
+{ "id": "sonnet", "kind": "model", "enabled": true, "route": "claude_cli", "pool": "claude_week", "label": "Sonnet" }

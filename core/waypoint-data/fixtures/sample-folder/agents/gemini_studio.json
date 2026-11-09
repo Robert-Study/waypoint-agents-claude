@@ -1,0 +1,1 @@
+{ "id": "gemini_studio", "kind": "addon", "enabled": true, "route": null, "pool": null, "label": "Google AI Studio helper (free, text only)" }

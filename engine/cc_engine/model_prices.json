@@ -1,0 +1,14 @@
+{
+  "_note": "Public list prices in US dollars per million tokens (platform.claude.com pricing page, 6 Nov 2026), used only to show a cost equivalent for subscription use. It is an estimate, not a bill. cache_write is the 1-hour cache price, which Claude Code uses. Haiku 5.5's higher rate above 100k prompt tokens is not modelled. The longest matching family prefix wins; a null price means no cost is shown.",
+  "context_window_default": 200000,
+  "context_window_1m": 1000000,
+  "families": {
+    "claude-fable-5": {"context_window": 1000000, "input": 10, "output": 50, "cache_read": 0.25, "cache_write": 20},
+    "claude-opus-5": {"context_window": 1000000, "input": 4, "output": 20, "cache_read": 0.2, "cache_write": 8},
+    "claude-sonnet-5": {"context_window": 1000000, "input": 2, "output": 10, "cache_read": 0.1, "cache_write": 4},
+    "claude-haiku-5": {"context_window": 1000000, "input": 0.1, "output": 0.5, "cache_read": 0.01, "cache_write": 0.2},
+    "claude-opus-4": {"context_window": 1000000, "input": 5, "output": 25, "cache_read": 0.5, "cache_write": 10},
+    "claude-sonnet-4": {"context_window": 1000000, "input": 3, "output": 15, "cache_read": 0.3, "cache_write": 6},
+    "claude-haiku-4": {"input": 1, "output": 5, "cache_read": 0.1, "cache_write": 2}
+  }
+}

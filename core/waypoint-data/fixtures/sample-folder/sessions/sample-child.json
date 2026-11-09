@@ -1,0 +1,32 @@
+{
+  "schema": "waypoint.session.v1",
+  "id": "sample-child",
+  "agent": "claude",
+  "parent": "sample-root",
+  "fork_of": null,
+  "orchestrator": "sample-lead",
+  "project": "sample-project",
+  "node": "sample-node",
+  "cwd": "SAMPLE/worktree",
+  "title": "SAMPLE worker session",
+  "status": "done",
+  "started_at": "2026-01-01T09:15:00Z",
+  "updated_at": "2026-01-01T09:29:00Z",
+  "events": [
+    {
+      "seq": 0,
+      "at": "2026-01-01T09:15:00Z",
+      "kind": "started",
+      "actor": "sample-root",
+      "summary": "SAMPLE worker started",
+      "parent_id": "sample-root"
+    },
+    {
+      "seq": 1,
+      "at": "2026-01-01T09:29:00Z",
+      "kind": "ended",
+      "actor": "sample-child",
+      "summary": "SAMPLE worker ended"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "waypoint.todo.v1",
+  "id": "t-approve",
+  "text": "Approve the new layout.",
+  "status": "open",
+  "category": "decisions",
+  "subtype": "approval",
+  "link": null,
+  "node": {
+    "project": "demo-v2",
+    "id": "B1"
+  },
+  "project": "demo-v2",
+  "order": 1,
+  "merged_into": null,
+  "click_count": 0,
+  "next_click": "Open the layout screenshot",
+  "created_at": "2026-11-07T09:00:00Z",
+  "created_by": "engine",
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

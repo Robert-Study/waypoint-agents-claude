@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "waypoint.learn.v1",
+  "title": "LearnFile",
+  "description": "learn/mastery.json, learn/cards.json, learn/log.json: interview mastery, spaced-practice cards and the attempt log. The kind field says which.",
+  "type": "object",
+  "required": ["schema", "kind"],
+  "oneOf": [
+    {"$ref": "#/$defs/mastery_file"},
+    {"$ref": "#/$defs/cards_file"},
+    {"$ref": "#/$defs/log_file"}
+  ],
+  "$defs": {
+    "mastery": {
+      "title": "LearnMastery",
+      "type": "object",
+      "required": ["competency_id", "level", "attempts"],
+      "additionalProperties": false,
+      "properties": {
+        "competency_id": {"type": "string", "minLength": 1},
+        "level": {"type": "number"},
+        "attempts": {"type": "integer", "minimum": 0},
+        "updated_at": {"type": ["string", "null"]}
+      }
+    },
+    "card": {
+      "title": "LearnCard",
+      "type": "object",
+      "required": ["question_id", "reps", "ease", "interval_days", "due_at"],
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {"type": "string", "minLength": 1},
+        "reps": {"type": "integer", "minimum": 0},
+        "ease": {"type": "number"},
+        "interval_days": {"type": "number", "minimum": 0},
+        "due_at": {"type": "string"},
+        "last_rating": {"type": ["integer", "null"]},
+        "updated_at": {"type": ["string", "null"]}
+      }
+    },
+    "log_entry": {
+      "title": "LearnLogEntry",
+      "type": "object",
+      "required": ["seq", "at", "question_id", "outcome"],
+      "additionalProperties": false,
+      "properties": {
+        "seq": {"type": "integer", "minimum": 0},
+        "at": {"type": "string"},
+        "question_id": {"type": "string", "minLength": 1},
+        "competency_id": {"type": ["string", "null"]},
+        "outcome": {"type": "string"},
+        "before": {"type": ["number", "null"]},
+        "after": {"type": ["number", "null"]}
+      }
+    },
+    "mastery_file": {
+      "title": "LearnMasteryFile",
+      "type": "object",
+      "required": ["schema", "kind", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "waypoint.learn.v1"},
+        "kind": {"const": "mastery"},
+        "items": {"type": "array", "items": {"$ref": "#/$defs/mastery"}}
+      }
+    },
+    "cards_file": {
+      "title": "LearnCardsFile",
+      "type": "object",
+      "required": ["schema", "kind", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "waypoint.learn.v1"},
+        "kind": {"const": "cards"},
+        "items": {"type": "array", "items": {"$ref": "#/$defs/card"}}
+      }
+    },
+    "log_file": {
+      "title": "LearnLogFile",
+      "type": "object",
+      "required": ["schema", "kind", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "waypoint.learn.v1"},
+        "kind": {"const": "log"},
+        "items": {"type": "array", "items": {"$ref": "#/$defs/log_entry"}}
+      }
+    }
+  }
+}

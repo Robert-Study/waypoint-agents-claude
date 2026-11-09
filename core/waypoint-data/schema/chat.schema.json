@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "waypoint.chat.v1",
+  "title": "ChatFile",
+  "description": "chats/<id>.json plus chats/<id>/messages.ndjson: Claude and Codex direct and subagent chats. A DeepSeek chat belongs to DSH only and has no shape here.",
+  "type": "object",
+  "required": ["schema", "id", "provider", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "waypoint.chat.v1"},
+    "id": {"type": "string", "minLength": 1},
+    "provider": {"enum": ["claude", "codex"]},
+    "kind": {"enum": ["direct", "subagent"]},
+    "parent_session": {"type": ["string", "null"]},
+    "title": {"type": ["string", "null"]},
+    "status": {"enum": ["open", "running", "done", "error", "archived"]},
+    "created_at": {"type": "string"},
+    "updated_at": {"type": "string"},
+    "messages": {"type": "array", "items": {"$ref": "#/$defs/message"}, "description": "Optional inline messages; long chats keep them in messages.ndjson."}
+  },
+  "$defs": {
+    "message": {
+      "title": "ChatMessage",
+      "description": "One message; also one line of messages.ndjson.",
+      "type": "object",
+      "required": ["seq", "provider", "role", "text", "at"],
+      "additionalProperties": false,
+      "properties": {
+        "seq": {"type": "integer", "minimum": 0},
+        "provider": {"enum": ["claude", "codex"]},
+        "role": {"enum": ["user", "assistant", "system", "tool"]},
+        "text": {"type": "string"},
+        "at": {"type": "string"},
+        "turn_id": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

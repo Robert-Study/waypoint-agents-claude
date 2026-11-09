@@ -1,0 +1,27 @@
+{
+  "schema": "waypoint.paths.fixture.v1",
+  "note": "Inputs and expected outputs for the location-neutral path resolver. Replayed by paths.test.ts and by data-pyclient in Python. Paths use Windows (win32) rules; fs is a map of file path to text.",
+  "resolve_data_root": [
+    {"name": "env var wins", "env": {"WAYPOINT_DATA_DIR": "D:\\Wp Data\\my root"}, "home": "C:\\Users\\Rob Smith", "fs": {"C:\\Users\\Rob Smith\\.waypoint\\data-dir": "E:\\Other\n"}, "expect": {"root": "D:\\Wp Data\\my root", "source": "env"}},
+    {"name": "blank env var is ignored, pointer used", "env": {"WAYPOINT_DATA_DIR": "  "}, "home": "C:\\Users\\Rob Smith", "fs": {"C:\\Users\\Rob Smith\\.waypoint\\data-dir": "\"E:\\Other Place\\data\"\r\n"}, "expect": {"root": "E:\\Other Place\\data", "source": "pointer"}},
+    {"name": "pointer relative to home", "env": {}, "home": "C:\\Users\\Rob Smith", "fs": {"C:\\Users\\Rob Smith\\.waypoint\\data-dir": "Sync\\wp\n"}, "expect": {"root": "C:\\Users\\Rob Smith\\Sync\\wp", "source": "pointer"}},
+    {"name": "default under the user profile", "env": {}, "home": "C:\\Users\\Rob Smith", "fs": {}, "expect": {"root": "C:\\Users\\Rob Smith\\.waypoint\\data", "source": "default"}},
+    {"name": "empty pointer file falls to default", "env": {}, "home": "C:\\Users\\Rob Smith", "fs": {"C:\\Users\\Rob Smith\\.waypoint\\data-dir": "\n"}, "expect": {"root": "C:\\Users\\Rob Smith\\.waypoint\\data", "source": "default"}}
+  ],
+  "to_local_path": [
+    {"name": "path with spaces", "machines": {"desktop": "C:\\Users\\Rob Smith\\AI Disk Access\\code"}, "cwd": {"machine": "desktop", "rel": "dsh/control centre"}, "expect": "C:\\Users\\Rob Smith\\AI Disk Access\\code\\dsh\\control centre"},
+    {"name": "empty rel is the code root", "machines": {"desktop": "C:\\code"}, "cwd": {"machine": "desktop", "rel": ""}, "expect": "C:\\code"},
+    {"name": "drive letter absent on this machine: still pure string mapping", "machines": {"laptop": "Z:\\Not Mounted\\code"}, "cwd": {"machine": "laptop", "rel": "a/b"}, "expect": "Z:\\Not Mounted\\code\\a\\b"},
+    {"name": "unknown machine", "machines": {"desktop": "C:\\code"}, "cwd": {"machine": "ghost", "rel": "a"}, "expect_error": "unknown_machine"},
+    {"name": "rel escapes the root", "machines": {"desktop": "C:\\code"}, "cwd": {"machine": "desktop", "rel": "../secret"}, "expect_error": "bad_rel"},
+    {"name": "rel is absolute (drive)", "machines": {"desktop": "C:\\code"}, "cwd": {"machine": "desktop", "rel": "D:\\x"}, "expect_error": "bad_rel"},
+    {"name": "rel is absolute (rooted)", "machines": {"desktop": "C:\\code"}, "cwd": {"machine": "desktop", "rel": "/x"}, "expect_error": "bad_rel"}
+  ],
+  "to_cwd_ref": [
+    {"name": "inside root, slashes normalised", "machine": "desktop", "code_root": "C:\\Users\\Rob Smith\\AI Disk Access\\code", "abs": "C:\\Users\\Rob Smith\\AI Disk Access\\code\\dsh\\control centre", "expect": {"machine": "desktop", "rel": "dsh/control centre"}},
+    {"name": "case-insensitive drive and folders", "machine": "desktop", "code_root": "C:\\Code", "abs": "c:\\code\\App", "expect": {"machine": "desktop", "rel": "App"}},
+    {"name": "the root itself", "machine": "desktop", "code_root": "C:\\code", "abs": "C:\\code\\", "expect": {"machine": "desktop", "rel": ""}},
+    {"name": "outside root is refused, never stores a drive path", "machine": "desktop", "code_root": "C:\\code", "abs": "D:\\elsewhere", "expect_error": "outside_root"},
+    {"name": "sibling with shared prefix is outside", "machine": "desktop", "code_root": "C:\\code", "abs": "C:\\code2\\x", "expect_error": "outside_root"}
+  ]
+}

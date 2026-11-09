@@ -1,0 +1,12 @@
+{
+  "schema": "waypoint.version.v1",
+  "project": "demo-v1",
+  "n": 1,
+  "family": "demo-app",
+  "created_at": "2026-11-07T09:00:00Z",
+  "from_project": null,
+  "decisions": [],
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

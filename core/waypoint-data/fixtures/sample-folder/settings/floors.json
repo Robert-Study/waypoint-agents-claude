@@ -1,0 +1,8 @@
+{
+  "pools": {
+    "claude_5h": { "min_percent": null, "set_by": null, "set_at": null },
+    "claude_week": { "min_percent": null, "set_by": null, "set_at": null },
+    "codex_5h": { "min_percent": null, "set_by": null, "set_at": null },
+    "codex_week": { "min_percent": null, "set_by": null, "set_at": null }
+  }
+}

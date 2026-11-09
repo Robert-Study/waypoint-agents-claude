@@ -1,0 +1,13 @@
+{
+  "schema": "waypoint.action.v1",
+  "id": "act-001-run",
+  "type": "run",
+  "status": "queued",
+  "payload": {
+    "mode": "balanced",
+    "project": "waypoint-v6",
+    "node": "run-actions"
+  },
+  "created_at": "2026-11-07T12:00:00Z",
+  "by": "mod"
+}

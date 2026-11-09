@@ -1,0 +1,18 @@
+{
+  "schema": "waypoint.receipt.v1",
+  "project": "demo-v2",
+  "node": "A1",
+  "status": "done",
+  "summary": "The schema files are written and the check passes.",
+  "evidence": [
+    "node check.mjs: ok"
+  ],
+  "outputs": [
+    "schema/node.schema.json"
+  ],
+  "todo": null,
+  "questions": [],
+  "metrics": {
+    "tokens": 12000
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema": "waypoint.dispatch_request.v1",
+  "id": "disp-3-headless",
+  "project": "waypoint-v6",
+  "node": "run-actions",
+  "route": "headless",
+  "mode": "balanced",
+  "created_at": "2026-11-07T12:00:00Z",
+  "requested_by": "runner"
+}

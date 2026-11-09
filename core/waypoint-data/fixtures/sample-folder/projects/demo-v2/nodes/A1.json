@@ -1,0 +1,40 @@
+{
+  "schema": "waypoint.node.v1",
+  "project": "demo-v2",
+  "id": "A1",
+  "title": "Design the schema",
+  "goal": "Goal of Design the schema.",
+  "goal_hash": null,
+  "check_hash": null,
+  "check": {
+    "type": "command",
+    "run": "node check.mjs"
+  },
+  "deps": [],
+  "parent": null,
+  "estimate": 2,
+  "slot": null,
+  "location": {
+    "where": "pc",
+    "changed_at": "2026-11-07T09:00:00Z"
+  },
+  "files": [
+    "src/A1.ts"
+  ],
+  "kind": "worker",
+  "risk": "contained",
+  "prompt": "Build Design the schema.",
+  "recommended": "sonnet",
+  "effort": "medium",
+  "owner": "worker",
+  "lane": "build",
+  "pool": null,
+  "model": null,
+  "status": "done",
+  "attempts": 1,
+  "actor": "check:command",
+  "evidence": "check passed",
+  "rev": 1,
+  "updated_at": "2026-11-07T09:00:00Z",
+  "updated_by": "owner"
+}

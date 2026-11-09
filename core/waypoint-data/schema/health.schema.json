@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "waypoint/health.schema.json",
+  "title": "Route health probe result (health/<route>.json)",
+  "type": "object",
+  "required": ["ok", "reason", "checked_at"],
+  "additionalProperties": false,
+  "properties": {
+    "route": { "type": "string" },
+    "ok": { "type": "boolean" },
+    "reason": { "type": "string" },
+    "checked_at": { "type": "string", "minLength": 1 }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "waypoint.session.v1",
+  "id": "sample-root",
+  "agent": "claude",
+  "parent": null,
+  "fork_of": null,
+  "orchestrator": "sample-lead",
+  "project": "sample-project",
+  "node": null,
+  "cwd": "SAMPLE/cwd",
+  "title": "SAMPLE root session",
+  "status": "running",
+  "started_at": "2026-01-01T09:00:00Z",
+  "updated_at": "2026-01-01T09:30:00Z",
+  "events": [
+    {
+      "seq": 0,
+      "at": "2026-01-01T09:00:00Z",
+      "kind": "started",
+      "actor": "sample-lead",
+      "summary": "SAMPLE session started"
+    },
+    {
+      "seq": 1,
+      "at": "2026-01-01T09:05:00Z",
+      "kind": "message",
+      "actor": "user",
+      "summary": "SAMPLE message"
+    },
+    {
+      "seq": 2,
+      "at": "2026-01-01T09:10:00Z",
+      "kind": "fork",
+      "actor": "sample-lead",
+      "summary": "SAMPLE fork",
+      "fork_id": "sample-fork"
+    },
+    {
+      "seq": 3,
+      "at": "2026-01-01T09:12:00Z",
+      "kind": "tool",
+      "actor": "sample-lead",
+      "summary": "SAMPLE tool call",
+      "data": {
+        "tool": "SAMPLE"
+      }
+    },
+    {
+      "seq": 4,
+      "at": "2026-01-01T09:30:00Z",
+      "kind": "callback",
+      "actor": "sample-child",
+      "summary": "SAMPLE child reported back",
+      "parent_id": "sample-root",
+      "callback": {
+        "from_session": "sample-child",
+        "to_session": "sample-root",
+        "outcome": "done",
+        "summary": "SAMPLE done",
+        "receipt": null
+      }
+    }
+  ]
+}

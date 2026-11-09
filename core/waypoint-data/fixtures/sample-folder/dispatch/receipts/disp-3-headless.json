@@ -1,0 +1,10 @@
+{
+  "schema": "waypoint.dispatch_receipt.v1",
+  "request_id": "disp-3-headless",
+  "project": "waypoint-v6",
+  "node": "run-actions",
+  "route": "headless",
+  "status": "finished",
+  "at": "2026-11-07T12:00:00Z",
+  "pid": 4242
+}

@@ -1,0 +1,15 @@
+{
+  "usage_fresh_minutes": 30,
+  "max_retries": 2,
+  "sync_mode": { "waypoint-v6": "local" },
+  "web_root": null,
+  "web_url": null,
+  "gemini_key_slot": "Primary",
+  "python": "~/workspace/second-repo/.venv/Scripts/python.exe",
+  "model_pick": { "task": "sonnet", "chat": "sonnet", "plan": "opus" },
+  "mute_kinds": [],
+  "chime": true,
+  "panel_tabs": { "plan": true, "usage": true, "agents": true },
+  "mod": { "engineUrl": "http://127.0.0.1:8751", "ownedFilesGuard": true, "notifyQuestions": true, "workerTools": true },
+  "demo": true
+}
